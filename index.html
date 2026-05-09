@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLASSIFIED — Villa Annabel · W-047J8X</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
+
+:root {
+–paper:    #e8e0cc;
+–paper-dk: #d4c9b0;
+–ink:      #1a1714;
+–red:      #c0392b;
+–blue:     #1a3a5c;
+–blue-lt:  #2a5a8c;
+–cream:    #f2ead8;
+–faded:    rgba(26,23,20,0.35);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+background: var(–paper);
+color: var(–ink);
+font-family: ‘IBM Plex Mono’, monospace;
+font-weight: 300;
+overflow-x: hidden;
+cursor: none;
+}
+
+#cur {
+position: fixed; z-index: 9999;
+width: 8px; height: 8px;
+background: var(–red);
+border-radius: 50%;
+pointer-events: none;
+transform: translate(-50%,-50%);
+mix-blend-mode: multiply;
+}
+#cur-x {
+position: fixed; z-index: 9998;
+pointer-events: none;
+transform: translate(-50%,-50%);
+}
+#cur-x::before, #cur-x::after {
+content: ‘’;
+position: absolute;
+background: var(–ink);
+opacity: 0.3;
+}
+#cur-x::before { width: 20px; height: 1px; top: 0; left: -10px; }
+#cur-x::after  { width: 1px; height: 20px; top: -10px; left: 0; }
+
+.grain {
+position: fixed; inset: 0; z-index: 1000; pointer-events: none;
+opacity: 0.055;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘g’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23g)’/%3E%3C/svg%3E”);
+background-size: 180px;
+}
+
+.tape-top {
+position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+height: 4px;
+background: repeating-linear-gradient(90deg,var(–red) 0px,var(–red) 20px,transparent 20px,transparent 24px);
+}
+
+nav {
+position: fixed; top: 4px; left: 0; right: 0; z-index: 400;
+padding: .8rem 2.5rem;
+display: flex; align-items: center; justify-content: space-between;
+background: var(–paper);
+border-bottom: 1px solid rgba(26,23,20,.15);
+}
+.nav-file { font-size: .52rem; letter-spacing: .2em; color: var(–faded); text-transform: uppercase; }
+.nav-file span { color: var(–red); font-weight: 400; }
+.nav-stamp {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.1rem; letter-spacing: .25em; color: var(–red);
+border: 2px solid var(–red); padding: .1em .5em;
+transform: rotate(-1.5deg); opacity: .85;
+}
+.nav-cta {
+font-size: .52rem; letter-spacing: .2em; text-transform: uppercase;
+color: var(–cream); background: var(–ink);
+padding: .55em 1.2em; text-decoration: none; cursor: none;
+transition: background .3s;
+}
+.nav-cta:hover { background: var(–blue); }
+
+/* HERO */
+.hero {
+min-height: 100vh; padding-top: 50px;
+display: grid; grid-template-columns: 1fr 1fr;
+position: relative; overflow: hidden;
+}
+
+.hero-left {
+background: var(–ink);
+padding: 4rem 3.5rem;
+display: flex; flex-direction: column; justify-content: space-between;
+position: relative; overflow: hidden;
+}
+.hero-left::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: repeating-linear-gradient(0deg,transparent 0px,transparent 58px,rgba(255,255,255,.018) 58px,rgba(255,255,255,.018) 60px);
+pointer-events: none;
+}
+
+.hero-classified {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: .75rem; letter-spacing: .5em; color: var(–red);
+margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem;
+}
+.hero-classified::after { content: ‘’; flex: 1; height: 1px; background: rgba(192,57,43,.3); }
+
+.hero-file-num {
+font-size: .5rem; color: rgba(232,224,204,.2);
+letter-spacing: .15em; margin-bottom: .5rem;
+}
+
+.hero-title {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(5rem, 11vw, 10.5rem);
+line-height: .88; color: var(–cream); letter-spacing: .02em;
+position: relative; z-index: 2;
+}
+.hero-title-italic {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(1.8rem, 3.5vw, 3rem);
+font-style: italic; font-weight: 400;
+color: rgba(232,224,204,.4); line-height: 1.1; margin-top: .4rem;
+}
+
+.hero-redacted { margin-top: 2.5rem; display: flex; flex-direction: column; gap: .65rem; }
+.redact-line {
+display: flex; align-items: center; gap: .8rem;
+font-size: .55rem; letter-spacing: .08em; color: rgba(232,224,204,.2);
+text-transform: uppercase;
+}
+.redact-bar {
+display: inline-block; height: .8em;
+background: rgba(232,224,204,.45); border-radius: 1px;
+transition: opacity .4s;
+}
+.rb-s { width: 55px; }
+.rb-m { width: 105px; }
+.rb-l { width: 155px; }
+
+.hero-bottom {
+display: flex; justify-content: space-between; align-items: flex-end; margin-top: 4rem;
+}
+.hero-coords { font-size: .5rem; letter-spacing: .15em; color: rgba(232,224,204,.2); line-height: 2; }
+.hero-coords span { display: block; }
+.hero-scroll-hint {
+font-size: .48rem; letter-spacing: .3em; color: rgba(192,57,43,.45);
+text-transform: uppercase; writing-mode: vertical-rl;
+animation: blink 2s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:.4} 50%{opacity:1} }
+
+.hero-right { position: relative; overflow: hidden; background: #111; }
+.hero-img-ph {
+position: absolute; inset: 0;
+background: radial-gradient(ellipse at 40% 60%, rgba(26,58,92,.5) 0%, transparent 65%),
+linear-gradient(160deg,#1a2530 0%,#2a3820 35%,#1c140a 100%);
+display: flex; align-items: center; justify-content: center;
+}
+.hero-img-ph::before {
+content: ‘’; position: absolute; inset: 1.5rem;
+border: 1px solid rgba(232,224,204,.06); pointer-events: none;
+}
+.hero-img-placeholder-text {
+font-size: .48rem; letter-spacing: .3em; color: rgba(232,224,204,.1);
+text-transform: uppercase; text-align: center; line-height: 2.5;
+}
+.hero-stamp {
+position: absolute; bottom: 2rem; right: 2rem;
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 2.8rem; letter-spacing: .1em; color: var(–red);
+border: 4px solid var(–red); padding: .1em .4em;
+transform: rotate(-8deg); opacity: .3; pointer-events: none;
+}
+.hero-caption {
+position: absolute; bottom: 2rem; left: 2rem;
+font-size: .48rem; letter-spacing: .12em; color: rgba(232,224,204,.25);
+line-height: 1.9; text-transform: uppercase;
+}
+
+/* STATS */
+.stats-band {
+background: var(–ink); color: var(–cream);
+display: flex; border-top: 3px solid var(–red); border-bottom: 3px solid var(–red);
+}
+.stat-col {
+flex: 1; padding: 2rem 2rem;
+border-right: 1px solid rgba(232,224,204,.07);
+display: flex; flex-direction: column; gap: .4rem;
+}
+.stat-col:last-child { border-right: none; }
+.stat-label { font-size: .45rem; letter-spacing: .25em; color: rgba(232,224,204,.22); text-transform: uppercase; }
+.stat-val {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(1.8rem, 3vw, 3rem); color: var(–cream); line-height: 1; letter-spacing: .03em;
+}
+.stat-val em { font-style: normal; color: var(–red); }
+.stat-note { font-size: .42rem; color: rgba(232,224,204,.16); letter-spacing: .1em; }
+
+/* PROPERTY */
+.s-prop {
+display: grid; grid-template-columns: 55fr 45fr;
+min-height: 85vh; border-bottom: 1px solid rgba(26,23,20,.1);
+}
+.s-prop-text {
+padding: 6rem 4rem 5rem; border-right: 1px solid rgba(26,23,20,.1); position: relative;
+}
+.s-prop-text::before {
+content: ‘’; position: absolute; inset: 0;
+background: repeating-linear-gradient(0deg,transparent 0px,transparent 34px,rgba(26,23,20,.055) 34px,rgba(26,23,20,.055) 35px);
+pointer-events: none;
+}
+.section-label {
+font-size: .48rem; letter-spacing: .35em; color: var(–faded);
+text-transform: uppercase; margin-bottom: 2.5rem;
+display: flex; align-items: center; gap: .8rem;
+}
+.section-label::before { content: ‘▶’; font-size: .38rem; color: var(–red); }
+
+.prop-headline {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(3.2rem, 5.5vw, 6.2rem);
+line-height: .92; color: var(–ink); margin-bottom: 2.5rem; position: relative; z-index: 1;
+}
+.prop-headline em {
+font-family: ‘Playfair Display’, serif; font-style: italic;
+font-weight: 400; font-size: .62em; color: var(–blue);
+display: block; letter-spacing: .05em;
+}
+.prop-body {
+font-size: .72rem; line-height: 2.15; color: rgba(26,23,20,.6);
+max-width: 520px; position: relative; z-index: 1; margin-bottom: 2rem;
+}
+.hl { background: rgba(192,57,43,.1); padding: .1em .3em; }
+.prop-quote {
+position: relative; z-index: 1; margin: 2.5rem 0;
+padding: 1.5rem 2rem; background: rgba(26,23,20,.04); border-left: 3px solid var(–red);
+}
+.prop-quote p { font-family: ‘Playfair Display’, serif; font-style: italic; font-size: 1rem; line-height: 1.75; color: var(–blue); }
+.prop-quote cite { display: block; margin-top: .8rem; font-size: .45rem; letter-spacing: .2em; color: var(–faded); font-style: normal; text-transform: uppercase; }
+
+.s-prop-img { position: relative; overflow: hidden; background: #111; min-height: 500px; }
+.s-prop-img-ph {
+position: absolute; inset: 0;
+background: linear-gradient(135deg,#0d1e14 0%,#152838 60%,#200e0a 100%);
+display: flex; align-items: flex-end; padding: 2rem;
+}
+.s-prop-img-ph::after {
+content: ‘’; position: absolute; inset: 0;
+background: repeating-linear-gradient(-45deg,transparent 0px,transparent 8px,rgba(255,255,255,.012) 8px,rgba(255,255,255,.012) 9px);
+}
+.prop-img-cap {
+font-size: .46rem; letter-spacing: .15em; color: rgba(232,224,204,.2);
+line-height: 1.9; text-transform: uppercase; position: relative; z-index: 1;
+}
+
+/* SPY */
+.s-spy {
+background: var(–blue); color: var(–cream);
+position: relative; overflow: hidden; padding: 7rem 0;
+}
+.s-spy::before {
+content: ‘CLASSIFIED’;
+position: absolute; font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(8rem,18vw,18rem); letter-spacing: .05em;
+color: rgba(255,255,255,.028); top: 50%; left: 50%;
+transform: translate(-50%,-50%) rotate(-15deg);
+white-space: nowrap; pointer-events: none; user-select: none;
+}
+.s-spy-inner {
+max-width: 1280px; margin: 0 auto; padding: 0 4rem;
+display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+}
+.spy-section-label {
+font-size: .48rem; letter-spacing: .35em; color: rgba(232,224,204,.3);
+text-transform: uppercase; margin-bottom: 2.5rem;
+display: flex; align-items: center; gap: .8rem;
+}
+.spy-section-label::before { content: ‘▶’; font-size: .38rem; color: var(–red); }
+
+.spy-headline {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(3rem, 5.5vw, 5.5rem); line-height: .9; color: var(–cream); margin-bottom: 2rem;
+}
+.spy-headline em {
+font-family: ‘Playfair Display’, serif; font-style: italic;
+font-weight: 400; font-size: .7em; color: var(–red); display: block;
+}
+.spy-body { font-size: .7rem; line-height: 2.2; color: rgba(232,224,204,.5); margin-bottom: 1.5rem; }
+.spy-body strong { color: rgba(232,224,204,.82); font-weight: 400; }
+
+.spy-dossier {
+border: 1px solid rgba(232,224,204,.1); padding: 2.5rem;
+position: relative; background: rgba(255,255,255,.03);
+}
+.spy-dossier::before { content: ‘’; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(–red); }
+.dos-header {
+font-size: .46rem; letter-spacing: .3em; color: var(–red);
+text-transform: uppercase; margin-bottom: 1.8rem;
+padding-bottom: 1rem; border-bottom: 1px solid rgba(232,224,204,.08);
+}
+.dos-field { display: grid; grid-template-columns: 130px 1fr; gap: .3rem; margin-bottom: .75rem; font-size: .58rem; line-height: 1.6; }
+.dos-key { color: rgba(232,224,204,.28); letter-spacing: .1em; text-transform: uppercase; font-size: .46rem; }
+.dos-val { color: rgba(232,224,204,.72); }
+.dos-val-red { color: var(–red); }
+.dos-sep { height: 1px; background: rgba(232,224,204,.07); margin: 1.2rem 0; }
+.dos-quote {
+font-family: ‘Playfair Display’, serif; font-style: italic;
+font-size: .88rem; line-height: 1.75; color: rgba(232,224,204,.45); margin-top: 1.5rem;
+}
+.dos-guests-label { font-size: .43rem; letter-spacing: .3em; color: rgba(232,224,204,.22); text-transform: uppercase; margin: 1.5rem 0 .8rem; }
+.dos-guest-list { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+.dos-guest-list li {
+display: flex; align-items: center; gap: .8rem;
+font-family: ‘Special Elite’, cursive; font-size: .78rem; color: rgba(232,224,204,.4);
+transition: color .3s;
+}
+.dos-guest-list li:hover { color: rgba(232,224,204,.78); }
+.dos-guest-list li::before { content: ‘—’; color: var(–red); opacity: .5; font-size: .5rem; }
+
+/* FEATURES */
+.s-features { padding: 6rem 0; border-bottom: 1px solid rgba(26,23,20,.1); }
+.features-inner { max-width: 1280px; margin: 0 auto; padding: 0 4rem; }
+.features-hdr { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; margin-bottom: 4rem; align-items: end; }
+.features-big-num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(5rem,11vw,11rem); line-height: 1; color: rgba(26,23,20,.06); letter-spacing: -.02em;
+}
+.features-title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(2.5rem,4.5vw,4.5rem); line-height: .92; color: var(–ink); }
+.features-title em { font-family: ‘Playfair Display’, serif; font-style: italic; font-weight: 400; font-size: .8em; color: var(–blue); display: block; }
+
+.features-list { display: grid; grid-template-columns: repeat(2,1fr); border-top: 1px solid rgba(26,23,20,.1); }
+.feat {
+padding: 2.5rem 2.5rem 2.5rem 0; border-bottom: 1px solid rgba(26,23,20,.1); border-right: 1px solid rgba(26,23,20,.1);
+display: grid; grid-template-columns: 46px 1fr; gap: 1.5rem; align-items: start;
+transition: background .3s; cursor: none;
+}
+.feat:nth-child(2n) { border-right: none; padding-left: 2.5rem; padding-right: 0; }
+.feat:nth-last-child(-n+2) { border-bottom: none; }
+.feat:hover { background: rgba(26,23,20,.03); }
+.feat-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.3rem; color: rgba(26,23,20,.07); line-height: 1; text-align: right; }
+.feat-name { font-size: .52rem; letter-spacing: .25em; color: var(–blue); text-transform: uppercase; margin-bottom: .6rem; font-weight: 400; }
+.feat-desc { font-size: .68rem; line-height: 1.95; color: rgba(26,23,20,.52); }
+
+/* GALLERY */
+.s-gallery { background: var(–ink); padding: 3.5rem; }
+.gallery-hdr { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; }
+.gallery-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.1rem; letter-spacing: .3em; color: rgba(232,224,204,.18); }
+.gallery-roll { font-size: .45rem; letter-spacing: .2em; color: rgba(232,224,204,.12); }
+.contact-sheet { display: grid; grid-template-columns: repeat(6,1fr); gap: 5px; }
+.cf {
+position: relative; aspect-ratio: 3/4; background: #0a0804;
+border: 2px solid #181410; overflow: hidden; cursor: none;
+transition: border-color .3s, transform .3s;
+}
+.cf:hover { border-color: rgba(232,224,204,.18); transform: scale(1.04); z-index: 2; }
+.cf-inner { position: absolute; inset: 3px; overflow: hidden; }
+.cf-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.cp1 { background: linear-gradient(160deg,#0c2a1a 0%,#152030 100%); }
+.cp2 { background: linear-gradient(135deg,#200e06 0%,#1a2a1a 100%); }
+.cp3 { background: linear-gradient(200deg,#0a1830 0%,#150e08 100%); }
+.cp4 { background: linear-gradient(120deg,#141e0c 0%,#1e1214 100%); }
+.cp5 { background: linear-gradient(175deg,#1a1005 0%,#082030 100%); }
+.cp6 { background: linear-gradient(145deg,#0e1a24 0%,#1a0e10 100%); }
+.cf-lbl { font-size: .36rem; letter-spacing: .2em; color: rgba(232,224,204,.1); text-align: center; line-height: 2; text-transform: uppercase; }
+.cf-n { position: absolute; bottom: 3px; right: 5px; font-size: .36rem; color: rgba(232,224,204,.18); }
+
+/* LOCATION */
+.s-loc { display: grid; grid-template-columns: 1fr 1fr; min-height: 65vh; border-top: 1px solid rgba(26,23,20,.1); }
+.loc-left { padding: 5rem 4rem; border-right: 1px solid rgba(26,23,20,.1); display: flex; flex-direction: column; justify-content: center; }
+.loc-title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(3rem,5vw,5.5rem); line-height: .9; color: var(–ink); margin-bottom: 2rem; }
+.loc-title em { font-family: ‘Playfair Display’, serif; font-style: italic; font-weight: 400; font-size: .62em; color: var(–red); display: block; }
+.loc-body { font-size: .7rem; line-height: 2.1; color: rgba(26,23,20,.52); margin-bottom: 2.5rem; max-width: 440px; }
+.loc-table { width: 100%; border-collapse: collapse; }
+.loc-table tr { border-bottom: 1px solid rgba(26,23,20,.08); }
+.loc-table tr:last-child { border-bottom: none; }
+.loc-table td { padding: .65rem 0; font-size: .56rem; vertical-align: top; }
+.loc-table td:first-child { color: var(–faded); letter-spacing: .15em; text-transform: uppercase; width: 48%; padding-right: 1rem; font-size: .46rem; }
+
+.loc-right {
+position: relative; background: var(–paper-dk); overflow: hidden;
+display: flex; align-items: center; justify-content: center;
+}
+.loc-right::before {
+content: ‘’; position: absolute; inset: 0;
+background-image: radial-gradient(circle at 48% 55%, rgba(26,58,92,.12) 0%, transparent 40%),
+repeating-radial-gradient(circle at 48% 55%, transparent 0px, transparent 38px, rgba(26,23,20,.04) 38px, rgba(26,23,20,.04) 40px);
+}
+.loc-dot {
+width: 14px; height: 14px; background: var(–red); border-radius: 50%;
+position: relative; z-index: 2; animation: lp 2s ease-out infinite;
+box-shadow: 0 0 0 rgba(192,57,43,.5);
+}
+@keyframes lp { 0%{box-shadow:0 0 0 0 rgba(192,57,43,.5)} 70%{box-shadow:0 0 0 22px rgba(192,57,43,0)} 100%{box-shadow:0 0 0 0 rgba(192,57,43,0)} }
+.loc-coord { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); font-size: .48rem; letter-spacing: .2em; color: rgba(26,23,20,.28); white-space: nowrap; }
+
+/* CTA */
+.s-cta { background: var(–red); padding: 7rem 4rem; text-align: center; position: relative; overflow: hidden; }
+.s-cta::before {
+content: ‘ENQUIRE’; position: absolute; font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(8rem,20vw,20rem); letter-spacing: .05em; color: rgba(255,255,255,.045);
+top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none;
+}
+.cta-label { font-size: .5rem; letter-spacing: .4em; color: rgba(255,255,255,.45); text-transform: uppercase; margin-bottom: 2rem; }
+.cta-title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(3rem,7vw,7rem); line-height: .9; color: var(–cream); margin-bottom: 3rem; position: relative; z-index: 1; }
+.cta-title em { font-family: ‘Playfair Display’, serif; font-style: italic; font-weight: 400; font-size: .6em; display: block; color: rgba(255,255,255,.55); }
+.cta-acts { display: flex; gap: 1.5rem; justify-content: center; position: relative; z-index: 1; }
+.btn-w { font-size: .56rem; letter-spacing: .25em; text-transform: uppercase; background: var(–cream); color: var(–red); padding: 1em 2.2em; text-decoration: none; cursor: none; transition: all .3s; }
+.btn-w:hover { background: var(–ink); color: var(–cream); }
+.btn-ow { font-size: .56rem; letter-spacing: .25em; text-transform: uppercase; background: transparent; color: var(–cream); border: 1px solid rgba(255,255,255,.4); padding: 1em 2.2em; text-decoration: none; cursor: none; transition: all .3s; }
+.btn-ow:hover { border-color: var(–cream); background: rgba(255,255,255,.08); }
+
+footer {
+background: var(–ink); color: rgba(232,224,204,.22);
+padding: 2rem 3.5rem; display: flex; justify-content: space-between; align-items: center;
+font-size: .46rem; letter-spacing: .2em; text-transform: uppercase;
+}
+footer a { color: rgba(192,57,43,.55); text-decoration: none; }
+footer a:hover { color: var(–red); }
+
+.r { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+.r.on { opacity: 1; transform: none; }
+.d1{transition-delay:.08s} .d2{transition-delay:.18s} .d3{transition-delay:.3s} .d4{transition-delay:.44s}
+
+@media(max-width:860px){
+.hero{grid-template-columns:1fr}
+.hero-right{height:45vh}
+.stats-band{flex-wrap:wrap}
+.stat-col{flex:1 1 33%; border-bottom:1px solid rgba(232,224,204,.07)}
+.s-prop{grid-template-columns:1fr}
+.s-spy-inner{grid-template-columns:1fr; gap:3rem; padding:0 2rem}
+.features-list{grid-template-columns:1fr}
+.feat:nth-child(2n){border-right:1px solid rgba(26,23,20,.1); padding-left:0; padding-right:2.5rem}
+.contact-sheet{grid-template-columns:repeat(3,1fr)}
+.s-loc{grid-template-columns:1fr}
+.loc-right{height:40vh}
+nav{padding:.8rem 1.5rem}
+.nav-stamp{display:none}
+.features-inner, .s-spy-inner{padding:0 2rem}
+.features-hdr{grid-template-columns:1fr; gap:1rem}
+.features-big-num{font-size:4rem}
+.cta-acts{flex-direction:column; align-items:center}
+.loc-left{padding:4rem 2rem}
+.s-prop-text{padding:4rem 2rem}
+.s-gallery{padding:2.5rem 2rem}
+}
+</style>
+
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="tape-top"></div>
+<div id="cur"></div>
+<div id="cur-x"></div>
+
+<nav>
+  <div class="nav-file">File <span>W-047J8X</span> · Los Monteros · Marbella Este</div>
+  <div class="nav-stamp">Top Secret</div>
+  <a href="#enquire" class="nav-cta">Request Access</a>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-classified">Classified · Eyes Only</div>
+      <div class="hero-file-num">Subject File / Property Dossier / 1950–Present</div>
+      <h1 class="hero-title">VILLA<br>ANNABEL</h1>
+      <div class="hero-title-italic">Los Monteros, Marbella<br>Frontline Beach Estate</div>
+      <div class="hero-redacted">
+        <div class="redact-line">Subject acquired <span class="redact-bar rb-l"></span> 1950s</div>
+        <div class="redact-line">Original owner <span class="redact-bar rb-m"></span> Franco</div>
+        <div class="redact-line">Agent <span class="redact-bar rb-s"></span> Griffith · OSS</div>
+        <div class="redact-line">Guests incl. <span class="redact-bar rb-l"></span> Kennedy</div>
+      </div>
+    </div>
+    <div class="hero-bottom">
+      <div class="hero-coords">
+        <span>36°30′22.4″N</span>
+        <span>4°50′11.6″W</span>
+        <span style="margin-top:.3rem;opacity:.5">Mediterranean Sea · Spain</span>
+      </div>
+      <div class="hero-scroll-hint">Scroll to Declassify</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-ph">
+      <!-- <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><source src="villa.mp4"></video> -->
+      <div class="hero-img-placeholder-text">Insert video or photo here<br>Recommended: drone footage<br>or exterior / aerial shot</div>
+    </div>
+    <div class="hero-stamp">VILLA<br>ANNABEL</div>
+    <div class="hero-caption">
+      Los Monteros — Marbella Este<br>
+      Frontline Beach · 4.280 m² Plot<br>
+      Ref. W-047J8X · E&amp;V El Rosario
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+
+<div class="stats-band">
+  <div class="stat-col"><div class="stat-label">Built Area</div><div class="stat-val">778<em>m²</em></div><div class="stat-note">Main residence</div></div>
+  <div class="stat-col"><div class="stat-label">Plot</div><div class="stat-val">4.280<em>m²</em></div><div class="stat-note">No adj. neighbours</div></div>
+  <div class="stat-col"><div class="stat-label">Suites</div><div class="stat-val">6</div><div class="stat-note">+ guest house</div></div>
+  <div class="stat-col"><div class="stat-label">Bathrooms</div><div class="stat-val">7</div><div class="stat-note">All en-suite</div></div>
+  <div class="stat-col"><div class="stat-label">Price</div><div class="stat-val" style="font-size:clamp(1.4rem,2.2vw,2rem)">P.O.A.</div><div class="stat-note">Price on application</div></div>
+</div>
+
+<!-- THE PROPERTY -->
+
+<section class="s-prop">
+  <div class="s-prop-text">
+    <div class="section-label r">The Property</div>
+    <h2 class="prop-headline r d1">THE MOST<br>EXCEPTIONAL<br><em>beach estate</em><br>ON THE MED.</h2>
+    <p class="prop-body r d2">A frontline beach position on a <span class="hl">4.280 m² plot</span> within Los Monteros — Marbella's most exclusive coastal enclave, developed in the 1960s with no additional land available. What exists here cannot be replicated. Current coastal regulations make it impossible.</p>
+    <div class="prop-quote r d3">
+      <p>"The gardens flow naturally to the shore, creating an atmosphere of serenity and exclusivity that no planning regulation would permit today."</p>
+      <cite>— Engel & Völkers El Rosario</cite>
+    </div>
+    <p class="prop-body r d4">Moorish architecture with original Andalusian details. A spectacular floral patio with lámina de agua. Wide terraces. Uninterrupted Mediterranean views. A fully equipped beach chiringuito with sunsets over the Atlas Mountains of Morocco.</p>
+  </div>
+  <div class="s-prop-img">
+    <div class="s-prop-img-ph">
+      <!-- <img src="prop.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"> -->
+      <div class="prop-img-cap">Insert property photograph<br>Exterior / garden / beach<br>Format: portrait preferred</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SPY -->
+
+<section class="s-spy">
+  <div class="s-spy-inner">
+    <div>
+      <div class="spy-section-label r">Subject History · Declassified</div>
+      <h2 class="spy-headline r d1">SHE WORE<br>BALENCIAGA.<br><em>And carried a pistol.</em></h2>
+      <p class="spy-body r d2">Built in the 1950s for <strong>Carmen Franco</strong>, daughter of the Spanish Generalísimo. Acquired a decade later by <strong>Aline Griffith</strong> — American OSS field agent, New York model, and Countess of Romanones — sent to Madrid under cover to infiltrate Nazi networks within Spain's neutral wartime élite.</p>
+      <p class="spy-body r d3">Griffith moved through the highest circles of European society. Dressed in Balenciaga. Rubies at her throat. A pistol in her bag. Villa Annabel became her stage — hosting the most glamorous gatherings Marbella has ever seen.</p>
+      <p class="spy-body r d4">In 1989, the U.S. Army inducted her into its <strong>Military Intelligence Hall of Fame</strong>. Her bestselling memoir: <em>The Spy Wore Red</em>, 1987.</p>
+    </div>
+    <div class="spy-dossier r d2">
+      <div class="dos-header">▸ Subject Dossier · Aline Griffith</div>
+      <div class="dos-field"><div class="dos-key">Born</div><div class="dos-val">22 May 1923 · New York, USA</div></div>
+      <div class="dos-field"><div class="dos-key">Died</div><div class="dos-val">11 Dec 2017 · Madrid, Spain</div></div>
+      <div class="dos-field"><div class="dos-key">Agency</div><div class="dos-val dos-val-red">OSS — Office of Strategic Services</div></div>
+      <div class="dos-field"><div class="dos-key">Cover</div><div class="dos-val">American socialité · Model</div></div>
+      <div class="dos-field"><div class="dos-key">Title</div><div class="dos-val">Countess of Romanones</div></div>
+      <div class="dos-field"><div class="dos-key">Decoration</div><div class="dos-val">Mil. Intelligence Hall of Fame, 1989</div></div>
+      <div class="dos-sep"></div>
+      <div class="dos-quote">"With rubies at her neck and a pistol in her bag, she quickly became a star of the international jet set."</div>
+      <div class="dos-guests-label">▸ Known guests · Villa Annabel</div>
+      <ul class="dos-guest-list">
+        <li>Jackie Kennedy</li>
+        <li>Audrey Hepburn</li>
+        <li>Wallis Simpson</li>
+        <li style="color:rgba(232,224,204,.18);font-family:'IBM Plex Mono';font-size:.45rem;letter-spacing:.1em;font-style:normal">+ European royalty · magnates · celebrities</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+
+<section class="s-features">
+  <div class="features-inner">
+    <div class="features-hdr">
+      <div class="features-big-num r">09</div>
+      <div class="r d1">
+        <div class="section-label">The Residence</div>
+        <h2 class="features-title">EVERY DETAIL<br><em>considered.</em></h2>
+      </div>
+    </div>
+    <div class="features-list">
+      <div class="feat r"><div class="feat-num">01</div><div><div class="feat-name">Moorish Architecture</div><p class="feat-desc">Original Andalusian-Arab design with innumerable authentic details, carefully updated with contemporary finishes and refined interior decoration.</p></div></div>
+      <div class="feat r d1"><div class="feat-num">02</div><div><div class="feat-name">Floral Patio & Lámina de Agua</div><p class="feat-desc">A spectacular entrance courtyard with reflecting water sheet announces the ceremonial sequence of the main residence — classical Moorish tradition at its finest.</p></div></div>
+      <div class="feat r d1"><div class="feat-num">03</div><div><div class="feat-name">Private Beach Access</div><p class="feat-desc">Unobstructed frontline beach position with direct private access. Los Monteros beach is among the finest natural beaches on the Costa del Sol, south-east facing.</p></div></div>
+      <div class="feat r d2"><div class="feat-num">04</div><div><div class="feat-name">Rooftop Azotea Suite</div><p class="feat-desc">The principal suite opens onto a rooftop terrace with panoramic views toward the Atlas Mountains of Morocco and the full arc of the Marbella coastline.</p></div></div>
+      <div class="feat r d2"><div class="feat-num">05</div><div><div class="feat-name">Beachfront Chiringuito</div><p class="feat-desc">A fully equipped beach bar in first line — a unique entertainment space commanding sunset views over the Mediterranean and the Moroccan mountains beyond.</p></div></div>
+      <div class="feat r d3"><div class="feat-num">06</div><div><div class="feat-name">Independent Guest House</div><p class="feat-desc">A separate cottage within the gardens ensures complete guest privacy. Four additional suites in the main house provide comprehensive accommodation capacity.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY: CONTACT SHEET -->
+
+<div class="s-gallery">
+  <div class="gallery-hdr">
+    <div class="gallery-title">Photo Archive · Villa Annabel</div>
+    <div class="gallery-roll">Roll 01 — Los Monteros — Marbella Este</div>
+  </div>
+  <div class="contact-sheet">
+    <div class="cf"><div class="cf-inner"><div class="cf-ph cp1"><!-- img --><span class="cf-lbl">Patio<br>Central</span></div></div><div class="cf-n">01</div></div>
+    <div class="cf"><div class="cf-inner"><div class="cf-ph cp2"><!-- img --><span class="cf-lbl">La<br>Playa</span></div></div><div class="cf-n">02</div></div>
+    <div class="cf"><div class="cf-inner"><div class="cf-ph cp3"><!-- img --><span class="cf-lbl">Salón<br>Principal</span></div></div><div class="cf-n">03</div></div>
+    <div class="cf"><div class="cf-inner"><div class="cf-ph cp4"><!-- img --><span class="cf-lbl">Azotea<br>Suite</span></div></div><div class="cf-n">04</div></div>
+    <div class="cf"><div class="cf-inner"><div class="cf-ph cp5"><!-- img --><span class="cf-lbl">Chiringuito<br>Beach</span></div></div><div class="cf-n">05</div></div>
+    <div class="cf"><div class="cf-inner"><div class="cf-ph cp6"><!-- img --><span class="cf-lbl">Guest<br>House</span></div></div><div class="cf-n">06</div></div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+
+<section class="s-loc">
+  <div class="loc-left">
+    <div class="section-label r">The Location</div>
+    <h2 class="loc-title r d1">AN ADDRESS<br>THAT CANNOT<br><em>be repeated.</em></h2>
+    <p class="loc-body r d2">Los Monteros is a fully consolidated urbanisation — no additional plots remain for development. The position of Villa Annabel is, by the definition of current coastal regulations, irreplaceable.</p>
+    <table class="loc-table r d3">
+      <tr><td>Beach</td><td>Direct private access · First line</td></tr>
+      <tr><td>Hotel Los Monteros</td><td>Adjacent · 5-star spa &amp; golf</td></tr>
+      <tr><td>Marbella Centro</td><td>15 min east by car</td></tr>
+      <tr><td>Málaga Airport</td><td>±45 minutes</td></tr>
+      <tr><td>Orientation</td><td>South-east · Atlas Mountains view</td></tr>
+      <tr><td>Security</td><td>Gated community · 24h surveillance</td></tr>
+    </table>
+  </div>
+  <div class="loc-right">
+    <div class="loc-dot"></div>
+    <div class="loc-coord">36°30′N · 4°50′W · Los Monteros · Marbella Este</div>
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section class="s-cta" id="enquire">
+  <div class="cta-label">Engel &amp; Völkers El Rosario · Ref. W-047J8X</div>
+  <h2 class="cta-title">REQUEST YOUR<br>PRIVATE<br><em>viewing.</em></h2>
+  <div class="cta-acts">
+    <a href="tel:+34952832040" class="btn-w">+34 952 83 20 40</a>
+    <a href="mailto:elrosario@engelvoelkers.com" class="btn-ow">Send Enquiry</a>
+  </div>
+</section>
+
+<footer>
+  <div>Villa Annabel · Los Monteros · Marbella Este</div>
+  <div>Ref. <a href="#">W-047J8X</a> · Engel &amp; Völkers El Rosario</div>
+  <div>+34 952 83 20 40</div>
+</footer>
+
+<script>
+// CURSOR
+const cur=document.getElementById('cur'),curX=document.getElementById('cur-x');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function tick(){
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  cx+=(mx-cx)*.14;cy+=(my-cy)*.14;
+  curX.style.left=cx+'px';curX.style.top=cy+'px';
+  requestAnimationFrame(tick);
+})();
+
+// REDACTED bars — staged reveal
+document.querySelectorAll('.redact-bar').forEach((b,i)=>{
+  b.style.opacity='0';
+  setTimeout(()=>{b.style.transition='opacity .5s';b.style.opacity='1';},1100+i*250);
+});
+
+// SCROLL REVEAL
+const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+
+// PARALLAX HERO
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  const p=document.querySelector('.hero-img-ph');
+  if(p)p.style.transform=`translateY(${y*.22}px) scale(1.04)`;
+  const l=document.querySelector('.hero-left');
+  if(l)l.style.transform=`translateY(${y*.1}px)`;
+},{passive:true});
+</script>
+
+</body>
+</html>
