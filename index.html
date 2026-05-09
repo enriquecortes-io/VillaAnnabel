@@ -4,683 +4,1022 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CLASSIFIED — Villa Annabel · W-047J8X</title>
+<title>Villa Annabel — Los Monteros, Marbella</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=Playfair+Display:ital,wght@1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Josefin+Sans:wght@200;300;400&family=Scheherazade+New:wght@400;700&display=swap');
 
 :root {
-–paper:    #e8e0cc;
-–paper-dk: #d4c9b0;
-–ink:      #1a1714;
-–red:      #c0392b;
-–blue:     #1a3a5c;
-–blue-lt:  #2a5a8c;
-–cream:    #f2ead8;
-–faded:    rgba(26,23,20,0.35);
+–white:      #f5f1e8;
+–white-warm: #ece6d8;
+–plaster:    #ddd5c2;
+–terra:      #a84e28;
+–zellige:    #1c5566;
+–garden:     #283d26;
+–arch:       #7a5e32;
+–ink:        #18130e;
+–water:      #c4983e;
+–ink-faded:  rgba(24,19,14,.4);
+–ink-soft:   rgba(24,19,14,.22);
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior:smooth; }
 
 body {
-background: var(–paper);
+background: var(–white);
 color: var(–ink);
-font-family: ‘IBM Plex Mono’, monospace;
+font-family: ‘Josefin Sans’, sans-serif;
 font-weight: 300;
 overflow-x: hidden;
 cursor: none;
 }
 
 #cur {
-position: fixed; z-index: 9999;
-width: 8px; height: 8px;
-background: var(–red);
-border-radius: 50%;
-pointer-events: none;
-transform: translate(-50%,-50%);
+position:fixed; z-index:9999; pointer-events:none;
+width:8px; height:8px; border-radius:50%;
+background: var(–terra);
+transform:translate(-50%,-50%);
 mix-blend-mode: multiply;
 }
-#cur-x {
-position: fixed; z-index: 9998;
-pointer-events: none;
-transform: translate(-50%,-50%);
-}
-#cur-x::before, #cur-x::after {
-content: ‘’;
-position: absolute;
-background: var(–ink);
-opacity: 0.3;
-}
-#cur-x::before { width: 20px; height: 1px; top: 0; left: -10px; }
-#cur-x::after  { width: 1px; height: 20px; top: -10px; left: 0; }
-
-.grain {
-position: fixed; inset: 0; z-index: 1000; pointer-events: none;
-opacity: 0.055;
-background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 200 200’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘g’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.85’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23g)’/%3E%3C/svg%3E”);
-background-size: 180px;
+#cur-r {
+position:fixed; z-index:9998; pointer-events:none;
+width:32px; height:32px; border-radius:50%;
+border:1px solid rgba(168,78,40,.25);
+transform:translate(-50%,-50%);
+transition: transform .18s ease;
 }
 
-.tape-top {
-position: fixed; top: 0; left: 0; right: 0; z-index: 500;
-height: 4px;
-background: repeating-linear-gradient(90deg,var(–red) 0px,var(–red) 20px,transparent 20px,transparent 24px);
-}
-
+/* ── NAV ── pure catalogue header, no actions */
 nav {
-position: fixed; top: 4px; left: 0; right: 0; z-index: 400;
-padding: .8rem 2.5rem;
-display: flex; align-items: center; justify-content: space-between;
-background: var(–paper);
-border-bottom: 1px solid rgba(26,23,20,.15);
+position:fixed; top:0; left:0; right:0; z-index:500;
+height:56px;
+display:flex; align-items:center; justify-content:space-between;
+padding:0 4rem;
+background: rgba(245,241,232,.96);
+backdrop-filter: blur(10px);
+border-bottom:1px solid var(–ink-soft);
 }
-.nav-file { font-size: .52rem; letter-spacing: .2em; color: var(–faded); text-transform: uppercase; }
-.nav-file span { color: var(–red); font-weight: 400; }
-.nav-stamp {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 1.1rem; letter-spacing: .25em; color: var(–red);
-border: 2px solid var(–red); padding: .1em .5em;
-transform: rotate(-1.5deg); opacity: .85;
+.nav-left {
+font-family:‘IM Fell English’, serif;
+font-size:.95rem; letter-spacing:.03em; color:var(–ink);
 }
-.nav-cta {
-font-size: .52rem; letter-spacing: .2em; text-transform: uppercase;
-color: var(–cream); background: var(–ink);
-padding: .55em 1.2em; text-decoration: none; cursor: none;
-transition: background .3s;
+.nav-left em { font-style:italic; color:var(–terra); }
+.nav-center {
+font-size:.48rem; letter-spacing:.4em; text-transform:uppercase;
+color:var(–ink-faded);
 }
-.nav-cta:hover { background: var(–blue); }
+.nav-right {
+font-size:.48rem; letter-spacing:.3em; text-transform:uppercase;
+color:var(–ink-faded);
+}
 
-/* HERO */
+/* ── HERO ── */
 .hero {
-min-height: 100vh; padding-top: 50px;
-display: grid; grid-template-columns: 1fr 1fr;
-position: relative; overflow: hidden;
+min-height:100vh;
+padding-top:56px;
+position:relative;
+overflow:hidden;
+display:flex;
+flex-direction:column;
 }
 
-.hero-left {
-background: var(–ink);
-padding: 4rem 3.5rem;
-display: flex; flex-direction: column; justify-content: space-between;
-position: relative; overflow: hidden;
+.hero-media {
+position:absolute; inset:0; top:56px;
+z-index:1;
 }
-.hero-left::before {
-content: ‘’;
-position: absolute; inset: 0;
-background: repeating-linear-gradient(0deg,transparent 0px,transparent 58px,rgba(255,255,255,.018) 58px,rgba(255,255,255,.018) 60px);
-pointer-events: none;
+.hero-media-inner {
+position:absolute; inset:0;
+background:
+radial-gradient(ellipse at 45% 35%, rgba(28,85,102,.3) 0%, transparent 55%),
+radial-gradient(ellipse at 75% 80%, rgba(40,61,38,.25) 0%, transparent 50%),
+linear-gradient(180deg, #d4c8a8 0%, #a8b898 45%, #6a8870 100%);
 }
-
-.hero-classified {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: .75rem; letter-spacing: .5em; color: var(–red);
-margin-bottom: 3rem; display: flex; align-items: center; gap: 1rem;
+.hero-media::after {
+content:’’;
+position:absolute; inset:0;
+background:linear-gradient(to bottom,
+rgba(245,241,232,0) 20%,
+rgba(245,241,232,.5) 70%,
+rgba(245,241,232,1) 100%);
+z-index:2;
 }
-.hero-classified::after { content: ‘’; flex: 1; height: 1px; background: rgba(192,57,43,.3); }
-
-.hero-file-num {
-font-size: .5rem; color: rgba(232,224,204,.2);
-letter-spacing: .15em; margin-bottom: .5rem;
-}
-
-.hero-title {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(5rem, 11vw, 10.5rem);
-line-height: .88; color: var(–cream); letter-spacing: .02em;
-position: relative; z-index: 2;
-}
-.hero-title-italic {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(1.8rem, 3.5vw, 3rem);
-font-style: italic; font-weight: 400;
-color: rgba(232,224,204,.4); line-height: 1.1; margin-top: .4rem;
+.hero-ph-note {
+position:absolute; bottom:6rem; left:50%;
+transform:translateX(-50%);
+font-size:.44rem; letter-spacing:.35em; color:rgba(24,19,14,.18);
+text-transform:uppercase; white-space:nowrap; z-index:3;
 }
 
-.hero-redacted { margin-top: 2.5rem; display: flex; flex-direction: column; gap: .65rem; }
-.redact-line {
-display: flex; align-items: center; gap: .8rem;
-font-size: .55rem; letter-spacing: .08em; color: rgba(232,224,204,.2);
-text-transform: uppercase;
+/* The arch — SVG overlay, structural not decorative */
+.hero-arch {
+position:absolute; inset:0; top:56px;
+z-index:3; pointer-events:none;
+display:flex; justify-content:center;
 }
-.redact-bar {
-display: inline-block; height: .8em;
-background: rgba(232,224,204,.45); border-radius: 1px;
-transition: opacity .4s;
-}
-.rb-s { width: 55px; }
-.rb-m { width: 105px; }
-.rb-l { width: 155px; }
-
-.hero-bottom {
-display: flex; justify-content: space-between; align-items: flex-end; margin-top: 4rem;
-}
-.hero-coords { font-size: .5rem; letter-spacing: .15em; color: rgba(232,224,204,.2); line-height: 2; }
-.hero-coords span { display: block; }
-.hero-scroll-hint {
-font-size: .48rem; letter-spacing: .3em; color: rgba(192,57,43,.45);
-text-transform: uppercase; writing-mode: vertical-rl;
-animation: blink 2s ease-in-out infinite;
-}
-@keyframes blink { 0%,100%{opacity:.4} 50%{opacity:1} }
-
-.hero-right { position: relative; overflow: hidden; background: #111; }
-.hero-img-ph {
-position: absolute; inset: 0;
-background: radial-gradient(ellipse at 40% 60%, rgba(26,58,92,.5) 0%, transparent 65%),
-linear-gradient(160deg,#1a2530 0%,#2a3820 35%,#1c140a 100%);
-display: flex; align-items: center; justify-content: center;
-}
-.hero-img-ph::before {
-content: ‘’; position: absolute; inset: 1.5rem;
-border: 1px solid rgba(232,224,204,.06); pointer-events: none;
-}
-.hero-img-placeholder-text {
-font-size: .48rem; letter-spacing: .3em; color: rgba(232,224,204,.1);
-text-transform: uppercase; text-align: center; line-height: 2.5;
-}
-.hero-stamp {
-position: absolute; bottom: 2rem; right: 2rem;
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: 2.8rem; letter-spacing: .1em; color: var(–red);
-border: 4px solid var(–red); padding: .1em .4em;
-transform: rotate(-8deg); opacity: .3; pointer-events: none;
-}
-.hero-caption {
-position: absolute; bottom: 2rem; left: 2rem;
-font-size: .48rem; letter-spacing: .12em; color: rgba(232,224,204,.25);
-line-height: 1.9; text-transform: uppercase;
+.hero-arch svg {
+width:min(68vw, 780px);
+height:100%;
 }
 
-/* STATS */
-.stats-band {
-background: var(–ink); color: var(–cream);
-display: flex; border-top: 3px solid var(–red); border-bottom: 3px solid var(–red);
+.hero-foot {
+position:relative; z-index:4;
+margin-top:auto;
+padding:0 4rem 4.5rem;
+display:grid;
+grid-template-columns:1fr auto 1fr;
+align-items:end;
+gap:2rem;
 }
-.stat-col {
-flex: 1; padding: 2rem 2rem;
-border-right: 1px solid rgba(232,224,204,.07);
-display: flex; flex-direction: column; gap: .4rem;
+.hero-ref {
+font-size:.46rem; letter-spacing:.3em; text-transform:uppercase;
+color:var(–ink-faded); line-height:2;
 }
-.stat-col:last-child { border-right: none; }
-.stat-label { font-size: .45rem; letter-spacing: .25em; color: rgba(232,224,204,.22); text-transform: uppercase; }
-.stat-val {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(1.8rem, 3vw, 3rem); color: var(–cream); line-height: 1; letter-spacing: .03em;
+.hero-ref span { display:block; }
+.hero-title-block { text-align:center; }
+.hero-name {
+font-family:‘Scheherazade New’, serif;
+font-size:clamp(5rem,14vw,13rem);
+line-height:.82;
+color:var(–ink);
+display:block;
+opacity:0; animation:fadeUp 1.1s .5s forwards;
 }
-.stat-val em { font-style: normal; color: var(–red); }
-.stat-note { font-size: .42rem; color: rgba(232,224,204,.16); letter-spacing: .1em; }
+.hero-name-sub {
+font-family:‘IM Fell English’, serif;
+font-style:italic;
+font-size:clamp(1rem,2.2vw,1.8rem);
+color:var(–terra);
+letter-spacing:.04em;
+display:block;
+margin-top:.5rem;
+opacity:0; animation:fadeUp .8s .9s forwards;
+}
+.hero-coords {
+text-align:right;
+font-size:.46rem; letter-spacing:.25em; text-transform:uppercase;
+color:var(–ink-faded); line-height:2.2;
+}
+.hero-coords span { display:block; }
 
-/* PROPERTY */
-.s-prop {
-display: grid; grid-template-columns: 55fr 45fr;
-min-height: 85vh; border-bottom: 1px solid rgba(26,23,20,.1);
-}
-.s-prop-text {
-padding: 6rem 4rem 5rem; border-right: 1px solid rgba(26,23,20,.1); position: relative;
-}
-.s-prop-text::before {
-content: ‘’; position: absolute; inset: 0;
-background: repeating-linear-gradient(0deg,transparent 0px,transparent 34px,rgba(26,23,20,.055) 34px,rgba(26,23,20,.055) 35px);
-pointer-events: none;
-}
-.section-label {
-font-size: .48rem; letter-spacing: .35em; color: var(–faded);
-text-transform: uppercase; margin-bottom: 2.5rem;
-display: flex; align-items: center; gap: .8rem;
-}
-.section-label::before { content: ‘▶’; font-size: .38rem; color: var(–red); }
+@keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
 
-.prop-headline {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(3.2rem, 5.5vw, 6.2rem);
-line-height: .92; color: var(–ink); margin-bottom: 2.5rem; position: relative; z-index: 1;
-}
-.prop-headline em {
-font-family: ‘Playfair Display’, serif; font-style: italic;
-font-weight: 400; font-size: .62em; color: var(–blue);
-display: block; letter-spacing: .05em;
-}
-.prop-body {
-font-size: .72rem; line-height: 2.15; color: rgba(26,23,20,.6);
-max-width: 520px; position: relative; z-index: 1; margin-bottom: 2rem;
-}
-.hl { background: rgba(192,57,43,.1); padding: .1em .3em; }
-.prop-quote {
-position: relative; z-index: 1; margin: 2.5rem 0;
-padding: 1.5rem 2rem; background: rgba(26,23,20,.04); border-left: 3px solid var(–red);
-}
-.prop-quote p { font-family: ‘Playfair Display’, serif; font-style: italic; font-size: 1rem; line-height: 1.75; color: var(–blue); }
-.prop-quote cite { display: block; margin-top: .8rem; font-size: .45rem; letter-spacing: .2em; color: var(–faded); font-style: normal; text-transform: uppercase; }
-
-.s-prop-img { position: relative; overflow: hidden; background: #111; min-height: 500px; }
-.s-prop-img-ph {
-position: absolute; inset: 0;
-background: linear-gradient(135deg,#0d1e14 0%,#152838 60%,#200e0a 100%);
-display: flex; align-items: flex-end; padding: 2rem;
-}
-.s-prop-img-ph::after {
-content: ‘’; position: absolute; inset: 0;
-background: repeating-linear-gradient(-45deg,transparent 0px,transparent 8px,rgba(255,255,255,.012) 8px,rgba(255,255,255,.012) 9px);
-}
-.prop-img-cap {
-font-size: .46rem; letter-spacing: .15em; color: rgba(232,224,204,.2);
-line-height: 1.9; text-transform: uppercase; position: relative; z-index: 1;
+/* ── BAND ── zellige colour stripe */
+.band {
+height:6px;
+background:repeating-linear-gradient(90deg,
+var(–terra)   0  22px,
+var(–zellige) 22px 44px,
+var(–garden)  44px 66px,
+var(–water)   66px 88px,
+var(–arch)    88px 110px
+);
 }
 
-/* SPY */
-.s-spy {
-background: var(–blue); color: var(–cream);
-position: relative; overflow: hidden; padding: 7rem 0;
+/* ── SECTION SHARED ── */
+.sec-label {
+font-size:.46rem; letter-spacing:.45em; text-transform:uppercase;
+color:var(–terra); margin-bottom:1.8rem;
+display:flex; align-items:center; gap:1rem;
 }
-.s-spy::before {
-content: ‘CLASSIFIED’;
-position: absolute; font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(8rem,18vw,18rem); letter-spacing: .05em;
-color: rgba(255,255,255,.028); top: 50%; left: 50%;
-transform: translate(-50%,-50%) rotate(-15deg);
-white-space: nowrap; pointer-events: none; user-select: none;
-}
-.s-spy-inner {
-max-width: 1280px; margin: 0 auto; padding: 0 4rem;
-display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
-}
-.spy-section-label {
-font-size: .48rem; letter-spacing: .35em; color: rgba(232,224,204,.3);
-text-transform: uppercase; margin-bottom: 2.5rem;
-display: flex; align-items: center; gap: .8rem;
-}
-.spy-section-label::before { content: ‘▶’; font-size: .38rem; color: var(–red); }
+.sec-label::after { content:’’; flex:0 0 28px; height:1px; background:var(–terra); opacity:.4; }
 
-.spy-headline {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(3rem, 5.5vw, 5.5rem); line-height: .9; color: var(–cream); margin-bottom: 2rem;
+/* ── S1: DESCRIPTION ── two columns, editorial */
+.s-desc {
+display:grid;
+grid-template-columns:1fr 1fr;
+min-height:85vh;
+border-bottom:1px solid var(–ink-soft);
 }
-.spy-headline em {
-font-family: ‘Playfair Display’, serif; font-style: italic;
-font-weight: 400; font-size: .7em; color: var(–red); display: block;
+.s-desc-left {
+padding:7rem 5rem 6rem;
+border-right:1px solid var(–ink-soft);
+display:flex; flex-direction:column; justify-content:center;
+position:relative;
 }
-.spy-body { font-size: .7rem; line-height: 2.2; color: rgba(232,224,204,.5); margin-bottom: 1.5rem; }
-.spy-body strong { color: rgba(232,224,204,.82); font-weight: 400; }
+/* Ruled paper — barely visible */
+.s-desc-left::before {
+content:’’; position:absolute; inset:0; pointer-events:none;
+background:repeating-linear-gradient(0deg,
+transparent 0,transparent 34px,
+rgba(24,19,14,.04) 34px, rgba(24,19,14,.04) 35px);
+}
+.desc-h {
+font-family:‘IM Fell English’, serif;
+font-size:clamp(2.2rem,3.5vw,3.5rem);
+line-height:1.12; color:var(–ink); margin-bottom:2.5rem;
+position:relative; z-index:1;
+}
+.desc-h em { font-style:italic; color:var(–terra); }
+.desc-body {
+font-size:.73rem; line-height:2.25;
+color:rgba(24,19,14,.55);
+max-width:480px; position:relative; z-index:1;
+margin-bottom:1.8rem;
+}
+.desc-pull {
+position:relative; z-index:1;
+margin-top:2rem;
+padding:1.4rem 2rem;
+border-left:2px solid var(–zellige);
+background:rgba(28,85,102,.04);
+}
+.desc-pull p {
+font-family:‘IM Fell English’, serif;
+font-style:italic; font-size:.95rem; line-height:1.85;
+color:var(–zellige);
+}
+.desc-pull cite {
+display:block; margin-top:.7rem;
+font-size:.44rem; letter-spacing:.25em; text-transform:uppercase;
+color:var(–ink-faded); font-style:normal;
+}
 
-.spy-dossier {
-border: 1px solid rgba(232,224,204,.1); padding: 2.5rem;
-position: relative; background: rgba(255,255,255,.03);
+.s-desc-right {
+position:relative; overflow:hidden; min-height:600px;
 }
-.spy-dossier::before { content: ‘’; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(–red); }
-.dos-header {
-font-size: .46rem; letter-spacing: .3em; color: var(–red);
-text-transform: uppercase; margin-bottom: 1.8rem;
-padding-bottom: 1rem; border-bottom: 1px solid rgba(232,224,204,.08);
+.s-desc-img {
+position:absolute; inset:0;
+background:linear-gradient(160deg, #1c2e16 0%, #1c5566 55%, #7a5e32 100%);
+display:flex; align-items:flex-end; padding:2.5rem;
 }
-.dos-field { display: grid; grid-template-columns: 130px 1fr; gap: .3rem; margin-bottom: .75rem; font-size: .58rem; line-height: 1.6; }
-.dos-key { color: rgba(232,224,204,.28); letter-spacing: .1em; text-transform: uppercase; font-size: .46rem; }
-.dos-val { color: rgba(232,224,204,.72); }
-.dos-val-red { color: var(–red); }
-.dos-sep { height: 1px; background: rgba(232,224,204,.07); margin: 1.2rem 0; }
-.dos-quote {
-font-family: ‘Playfair Display’, serif; font-style: italic;
-font-size: .88rem; line-height: 1.75; color: rgba(232,224,204,.45); margin-top: 1.5rem;
+.img-caption {
+font-size:.44rem; letter-spacing:.2em; text-transform:uppercase;
+color:rgba(245,241,232,.28); line-height:1.9;
 }
-.dos-guests-label { font-size: .43rem; letter-spacing: .3em; color: rgba(232,224,204,.22); text-transform: uppercase; margin: 1.5rem 0 .8rem; }
-.dos-guest-list { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
-.dos-guest-list li {
-display: flex; align-items: center; gap: .8rem;
-font-family: ‘Special Elite’, cursive; font-size: .78rem; color: rgba(232,224,204,.4);
-transition: color .3s;
-}
-.dos-guest-list li:hover { color: rgba(232,224,204,.78); }
-.dos-guest-list li::before { content: ‘—’; color: var(–red); opacity: .5; font-size: .5rem; }
 
-/* FEATURES */
-.s-features { padding: 6rem 0; border-bottom: 1px solid rgba(26,23,20,.1); }
-.features-inner { max-width: 1280px; margin: 0 auto; padding: 0 4rem; }
-.features-hdr { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; margin-bottom: 4rem; align-items: end; }
-.features-big-num {
-font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(5rem,11vw,11rem); line-height: 1; color: rgba(26,23,20,.06); letter-spacing: -.02em;
+/* ── S2: STATS — pure numbers, no decoration ── */
+.s-stats {
+display:grid; grid-template-columns:repeat(5,1fr);
+background:var(–white-warm);
+border-bottom:1px solid var(–ink-soft);
 }
-.features-title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(2.5rem,4.5vw,4.5rem); line-height: .92; color: var(–ink); }
-.features-title em { font-family: ‘Playfair Display’, serif; font-style: italic; font-weight: 400; font-size: .8em; color: var(–blue); display: block; }
-
-.features-list { display: grid; grid-template-columns: repeat(2,1fr); border-top: 1px solid rgba(26,23,20,.1); }
-.feat {
-padding: 2.5rem 2.5rem 2.5rem 0; border-bottom: 1px solid rgba(26,23,20,.1); border-right: 1px solid rgba(26,23,20,.1);
-display: grid; grid-template-columns: 46px 1fr; gap: 1.5rem; align-items: start;
-transition: background .3s; cursor: none;
+.stat {
+padding:3rem 2.5rem;
+border-right:1px solid var(–ink-soft);
+display:flex; flex-direction:column; gap:.5rem;
 }
-.feat:nth-child(2n) { border-right: none; padding-left: 2.5rem; padding-right: 0; }
-.feat:nth-last-child(-n+2) { border-bottom: none; }
-.feat:hover { background: rgba(26,23,20,.03); }
-.feat-num { font-family: ‘Bebas Neue’, sans-serif; font-size: 2.3rem; color: rgba(26,23,20,.07); line-height: 1; text-align: right; }
-.feat-name { font-size: .52rem; letter-spacing: .25em; color: var(–blue); text-transform: uppercase; margin-bottom: .6rem; font-weight: 400; }
-.feat-desc { font-size: .68rem; line-height: 1.95; color: rgba(26,23,20,.52); }
-
-/* GALLERY */
-.s-gallery { background: var(–ink); padding: 3.5rem; }
-.gallery-hdr { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; }
-.gallery-title { font-family: ‘Bebas Neue’, sans-serif; font-size: 1.1rem; letter-spacing: .3em; color: rgba(232,224,204,.18); }
-.gallery-roll { font-size: .45rem; letter-spacing: .2em; color: rgba(232,224,204,.12); }
-.contact-sheet { display: grid; grid-template-columns: repeat(6,1fr); gap: 5px; }
-.cf {
-position: relative; aspect-ratio: 3/4; background: #0a0804;
-border: 2px solid #181410; overflow: hidden; cursor: none;
-transition: border-color .3s, transform .3s;
+.stat:last-child { border-right:none; }
+.stat-n {
+font-family:‘IM Fell English’, serif;
+font-size:clamp(2rem,3.5vw,3.2rem);
+color:var(–zellige); line-height:1;
 }
-.cf:hover { border-color: rgba(232,224,204,.18); transform: scale(1.04); z-index: 2; }
-.cf-inner { position: absolute; inset: 3px; overflow: hidden; }
-.cf-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-.cp1 { background: linear-gradient(160deg,#0c2a1a 0%,#152030 100%); }
-.cp2 { background: linear-gradient(135deg,#200e06 0%,#1a2a1a 100%); }
-.cp3 { background: linear-gradient(200deg,#0a1830 0%,#150e08 100%); }
-.cp4 { background: linear-gradient(120deg,#141e0c 0%,#1e1214 100%); }
-.cp5 { background: linear-gradient(175deg,#1a1005 0%,#082030 100%); }
-.cp6 { background: linear-gradient(145deg,#0e1a24 0%,#1a0e10 100%); }
-.cf-lbl { font-size: .36rem; letter-spacing: .2em; color: rgba(232,224,204,.1); text-align: center; line-height: 2; text-transform: uppercase; }
-.cf-n { position: absolute; bottom: 3px; right: 5px; font-size: .36rem; color: rgba(232,224,204,.18); }
+.stat-n sub { font-size:.5em; color:var(–terra); vertical-align:baseline; }
+.stat-l { font-size:.44rem; letter-spacing:.3em; text-transform:uppercase; color:var(–ink-faded); }
+.stat-note { font-size:.6rem; line-height:1.7; color:rgba(24,19,14,.32); margin-top:.2rem; }
 
-/* LOCATION */
-.s-loc { display: grid; grid-template-columns: 1fr 1fr; min-height: 65vh; border-top: 1px solid rgba(26,23,20,.1); }
-.loc-left { padding: 5rem 4rem; border-right: 1px solid rgba(26,23,20,.1); display: flex; flex-direction: column; justify-content: center; }
-.loc-title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(3rem,5vw,5.5rem); line-height: .9; color: var(–ink); margin-bottom: 2rem; }
-.loc-title em { font-family: ‘Playfair Display’, serif; font-style: italic; font-weight: 400; font-size: .62em; color: var(–red); display: block; }
-.loc-body { font-size: .7rem; line-height: 2.1; color: rgba(26,23,20,.52); margin-bottom: 2.5rem; max-width: 440px; }
-.loc-table { width: 100%; border-collapse: collapse; }
-.loc-table tr { border-bottom: 1px solid rgba(26,23,20,.08); }
-.loc-table tr:last-child { border-bottom: none; }
-.loc-table td { padding: .65rem 0; font-size: .56rem; vertical-align: top; }
-.loc-table td:first-child { color: var(–faded); letter-spacing: .15em; text-transform: uppercase; width: 48%; padding-right: 1rem; font-size: .46rem; }
+/* ── S3: ARCHITECTURE — three arch panels ── */
+.s-arch {
+display:grid; grid-template-columns:repeat(3,1fr);
+border-bottom:1px solid var(–ink-soft);
+}
+.arch-panel {
+border-right:1px solid var(–ink-soft);
+display:flex; flex-direction:column;
+}
+.arch-panel:last-child { border-right:none; }
+.arch-media {
+flex:0 0 auto;
+aspect-ratio:3/4.2;
+position:relative; overflow:hidden;
+background:var(–plaster);
+}
+/* Arch-shaped clip on each photo */
+.arch-clip {
+position:absolute; inset:0;
+clip-path: url(#arch-clip);
+}
+.arch-ph {
+position:absolute; inset:0;
+display:flex; align-items:center; justify-content:center;
+}
+.ap-1 { background:linear-gradient(170deg, #1c2e16 0%, #2d4a28 55%, #4a7a40 100%); }
+.ap-2 { background:linear-gradient(170deg, #0e2535 0%, #1c5566 55%, #2a7a8a 100%); }
+.ap-3 { background:linear-gradient(170deg, #301408 0%, #7a5e32 50%, #a84e28 100%); }
+.arch-ph-hint {
+font-size:.42rem; letter-spacing:.3em; color:rgba(245,241,232,.15);
+text-transform:uppercase; text-align:center; line-height:2.5;
+}
+.arch-body { padding:2.5rem; flex:1; }
+.arch-idx {
+font-family:‘IM Fell English’, serif; font-size:2.5rem;
+color:rgba(24,19,14,.07); line-height:1; margin-bottom:.8rem;
+}
+.arch-name {
+font-size:.52rem; letter-spacing:.3em; text-transform:uppercase;
+color:var(–terra); margin-bottom:.8rem; font-weight:400;
+}
+.arch-desc { font-size:.68rem; line-height:2.1; color:rgba(24,19,14,.48); }
+
+/* ── S4: ZELLIGE PANEL — blue section, architectural feel ── */
+.s-blue {
+display:grid; grid-template-columns:1fr 1fr;
+background:var(–zellige);
+min-height:55vh;
+}
+.blue-left {
+padding:6rem 5rem;
+display:flex; flex-direction:column; justify-content:center;
+border-right:1px solid rgba(245,241,232,.08);
+position:relative; overflow:hidden;
+}
+/* Geometric zellige pattern */
+.blue-left::before {
+content:’’; position:absolute; inset:0; pointer-events:none;
+background-image:
+repeating-linear-gradient(0deg,
+transparent 0,transparent 45px,
+rgba(245,241,232,.04) 45px, rgba(245,241,232,.04) 46px),
+repeating-linear-gradient(90deg,
+transparent 0,transparent 45px,
+rgba(245,241,232,.04) 45px, rgba(245,241,232,.04) 46px),
+repeating-linear-gradient(45deg,
+transparent 0,transparent 31px,
+rgba(245,241,232,.025) 31px, rgba(245,241,232,.025) 32px),
+repeating-linear-gradient(-45deg,
+transparent 0,transparent 31px,
+rgba(245,241,232,.025) 31px, rgba(245,241,232,.025) 32px);
+}
+.blue-h {
+font-family:‘IM Fell English’, serif;
+font-size:clamp(2rem,3.5vw,3.5rem); line-height:1.1;
+color:rgba(245,241,232,.88); margin-bottom:2rem;
+position:relative; z-index:1;
+}
+.blue-h em { font-style:italic; color:var(–water); display:block; }
+.blue-body {
+font-size:.7rem; line-height:2.2;
+color:rgba(245,241,232,.42); max-width:420px;
+position:relative; z-index:1;
+}
+
+.blue-right {
+display:grid; grid-template-columns:1fr 1fr;
+border-left:1px solid rgba(245,241,232,.08);
+}
+.blue-stat {
+padding:3.5rem 3rem;
+border-right:1px solid rgba(245,241,232,.07);
+border-bottom:1px solid rgba(245,241,232,.07);
+display:flex; flex-direction:column; gap:.5rem;
+}
+.blue-stat:nth-child(2n) { border-right:none; }
+.blue-stat:nth-child(n+3) { border-bottom:none; }
+.blue-stat-n {
+font-family:‘IM Fell English’, serif;
+font-size:clamp(2rem,3vw,3rem); line-height:1;
+color:rgba(245,241,232,.8);
+}
+.blue-stat-n sub { font-size:.45em; color:var(–water); vertical-align:baseline; }
+.blue-stat-l { font-size:.44rem; letter-spacing:.28em; text-transform:uppercase; color:rgba(245,241,232,.25); }
+.blue-stat-note { font-size:.6rem; line-height:1.7; color:rgba(245,241,232,.28); margin-top:.2rem; }
+
+/* ── S5: HISTORY — dark, garden green ── */
+.s-hist {
+background:var(–garden);
+padding:8rem 0;
+position:relative; overflow:hidden;
+}
+/* Arch ghost */
+.s-hist::before {
+content:’’; position:absolute;
+top:-1px; left:50%; transform:translateX(-50%);
+width:520px; height:260px;
+border:1px solid rgba(245,241,232,.04);
+border-bottom:none;
+border-radius:50% 50% 0 0 / 100% 100% 0 0;
+pointer-events:none;
+}
+.hist-inner {
+max-width:1200px; margin:0 auto; padding:0 5rem;
+display:grid; grid-template-columns:5fr 7fr; gap:7rem; align-items:start;
+}
+.hist-img {
+position:relative;
+border:1px solid rgba(245,241,232,.08);
+aspect-ratio:3/4;
+overflow:hidden;
+}
+/* Arch top on image */
+.hist-img::before {
+content:’’; position:absolute; top:-1px; left:12%; right:12%;
+height:55%; border:1px solid rgba(245,241,232,.1);
+border-bottom:none; border-radius:50% 50% 0 0 / 100% 100% 0 0;
+z-index:2; pointer-events:none;
+}
+.hist-img-ph {
+position:absolute; inset:0;
+background:linear-gradient(170deg,#1a0e06 0%,#28200e 45%,#1c2a16 100%);
+display:flex; align-items:center; justify-content:center;
+}
+.hist-ph-hint {
+font-size:.42rem; letter-spacing:.3em; color:rgba(245,241,232,.1);
+text-transform:uppercase; text-align:center; line-height:2.5;
+}
+.hist-text {}
+.hist-h {
+font-family:‘IM Fell English’, serif;
+font-size:clamp(2rem,3.5vw,3.5rem); line-height:1.1;
+color:rgba(245,241,232,.9); margin-bottom:2rem;
+}
+.hist-h em { font-style:italic; color:var(–terra); }
+.hist-body {
+font-size:.7rem; line-height:2.25;
+color:rgba(245,241,232,.4); margin-bottom:1.6rem;
+}
+.hist-body strong { color:rgba(245,241,232,.7); font-weight:400; }
+.hist-dossier {
+margin-top:3rem;
+border-top:1px solid rgba(245,241,232,.08);
+padding-top:2rem;
+display:flex; flex-direction:column; gap:.65rem;
+}
+.hist-dossier-row {
+display:grid; grid-template-columns:130px 1fr;
+font-size:.6rem; color:rgba(245,241,232,.3); letter-spacing:.05em;
+}
+.hist-dossier-key { font-size:.44rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(245,241,232,.2); }
+.hist-dossier-val { color:rgba(245,241,232,.55); }
+.hist-guests {
+margin-top:2.5rem;
+border-top:1px solid rgba(245,241,232,.07);
+padding-top:1.8rem;
+}
+.hist-guests-label {
+font-size:.44rem; letter-spacing:.35em; text-transform:uppercase;
+color:rgba(245,241,232,.2); margin-bottom:1rem;
+}
+.hist-guest-list { list-style:none; display:flex; flex-direction:column; gap:.5rem; }
+.hist-guest-list li {
+font-family:‘IM Fell English’, serif; font-style:italic;
+font-size:.95rem; color:rgba(245,241,232,.32);
+display:flex; align-items:center; gap:1rem; transition:color .3s;
+}
+.hist-guest-list li:hover { color:var(–water); cursor:none; }
+.hist-guest-list li::before { content:’’; width:18px; height:1px; background:var(–terra); opacity:.5; flex-shrink:0; }
+
+/* ── S6: GALLERY — mosaic grid ── */
+.s-gallery {
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+grid-template-rows:50vh 50vh;
+gap:3px;
+background:var(–arch);
+}
+.g-item { position:relative; overflow:hidden; }
+.g-item:first-child { grid-row:1/3; }
+.g-ph {
+position:absolute; inset:0;
+transition:transform .7s cubic-bezier(.16,1,.3,1);
+}
+.g-item:hover .g-ph { transform:scale(1.04); }
+.g1 { background:linear-gradient(170deg,#162612 0%,#283d26 50%,#3d6035 100%); }
+.g2 { background:linear-gradient(170deg,#0c2030 0%,#1c5566 55%,#2a7a8a 100%); }
+.g3 { background:linear-gradient(170deg,#301408 0%,#6a4020 50%,#a84e28 100%); }
+.g4 { background:linear-gradient(170deg,#162016 0%,#283828 50%,#406040 100%); }
+.g5 { background:linear-gradient(170deg,#201408 0%,#7a5e32 50%,#a87e48 100%); }
+.g-label {
+position:absolute; bottom:2rem; left:2rem;
+font-size:.44rem; letter-spacing:.25em; text-transform:uppercase;
+color:rgba(245,241,232,.3); z-index:2;
+}
+.g-ph-hint {
+position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+font-size:.44rem; letter-spacing:.3em; color:rgba(245,241,232,.1);
+text-transform:uppercase; text-align:center; line-height:2.5;
+}
+
+/* ── S7: LOCATION — terracotta ── */
+.s-loc {
+display:grid; grid-template-columns:1fr 1fr;
+border-top:1px solid var(–ink-soft);
+}
+.loc-left {
+padding:6rem 5rem;
+border-right:1px solid var(–ink-soft);
+display:flex; flex-direction:column; justify-content:center;
+}
+.loc-h {
+font-family:‘IM Fell English’, serif;
+font-size:clamp(2rem,3.5vw,3.2rem); line-height:1.1;
+color:var(–ink); margin-bottom:2rem;
+}
+.loc-h em { font-style:italic; color:var(–terra); }
+.loc-body {
+font-size:.7rem; line-height:2.2;
+color:rgba(24,19,14,.5); max-width:420px; margin-bottom:2.5rem;
+}
+.loc-table { width:100%; border-collapse:collapse; }
+.loc-table tr { border-bottom:1px solid rgba(24,19,14,.07); }
+.loc-table tr:last-child { border-bottom:none; }
+.loc-table td { padding:.7rem 0; font-size:.58rem; vertical-align:top; }
+.loc-table td:first-child {
+font-size:.44rem; letter-spacing:.18em; text-transform:uppercase;
+color:var(–ink-faded); width:46%; padding-right:1rem;
+}
 
 .loc-right {
-position: relative; background: var(–paper-dk); overflow: hidden;
-display: flex; align-items: center; justify-content: center;
+position:relative; overflow:hidden;
+background:var(–white-warm);
+display:flex; align-items:center; justify-content:center;
 }
 .loc-right::before {
-content: ‘’; position: absolute; inset: 0;
-background-image: radial-gradient(circle at 48% 55%, rgba(26,58,92,.12) 0%, transparent 40%),
-repeating-radial-gradient(circle at 48% 55%, transparent 0px, transparent 38px, rgba(26,23,20,.04) 38px, rgba(26,23,20,.04) 40px);
+content:’’; position:absolute; inset:0;
+background-image:radial-gradient(circle, rgba(168,78,40,.16) 1px, transparent 1px);
+background-size:26px 26px;
 }
-.loc-dot {
-width: 14px; height: 14px; background: var(–red); border-radius: 50%;
-position: relative; z-index: 2; animation: lp 2s ease-out infinite;
-box-shadow: 0 0 0 rgba(192,57,43,.5);
+.loc-right::after {
+content:’’; position:absolute; inset:0;
+background:radial-gradient(ellipse at 48% 52%, rgba(28,85,102,.1) 0%, transparent 55%);
 }
-@keyframes lp { 0%{box-shadow:0 0 0 0 rgba(192,57,43,.5)} 70%{box-shadow:0 0 0 22px rgba(192,57,43,0)} 100%{box-shadow:0 0 0 0 rgba(192,57,43,0)} }
-.loc-coord { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); font-size: .48rem; letter-spacing: .2em; color: rgba(26,23,20,.28); white-space: nowrap; }
-
-/* CTA */
-.s-cta { background: var(–red); padding: 7rem 4rem; text-align: center; position: relative; overflow: hidden; }
-.s-cta::before {
-content: ‘ENQUIRE’; position: absolute; font-family: ‘Bebas Neue’, sans-serif;
-font-size: clamp(8rem,20vw,20rem); letter-spacing: .05em; color: rgba(255,255,255,.045);
-top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap; pointer-events: none;
+.loc-pin {
+width:14px; height:14px; border-radius:50%;
+background:var(–terra); position:relative; z-index:3;
+animation:pp 2.5s ease-out infinite;
 }
-.cta-label { font-size: .5rem; letter-spacing: .4em; color: rgba(255,255,255,.45); text-transform: uppercase; margin-bottom: 2rem; }
-.cta-title { font-family: ‘Bebas Neue’, sans-serif; font-size: clamp(3rem,7vw,7rem); line-height: .9; color: var(–cream); margin-bottom: 3rem; position: relative; z-index: 1; }
-.cta-title em { font-family: ‘Playfair Display’, serif; font-style: italic; font-weight: 400; font-size: .6em; display: block; color: rgba(255,255,255,.55); }
-.cta-acts { display: flex; gap: 1.5rem; justify-content: center; position: relative; z-index: 1; }
-.btn-w { font-size: .56rem; letter-spacing: .25em; text-transform: uppercase; background: var(–cream); color: var(–red); padding: 1em 2.2em; text-decoration: none; cursor: none; transition: all .3s; }
-.btn-w:hover { background: var(–ink); color: var(–cream); }
-.btn-ow { font-size: .56rem; letter-spacing: .25em; text-transform: uppercase; background: transparent; color: var(–cream); border: 1px solid rgba(255,255,255,.4); padding: 1em 2.2em; text-decoration: none; cursor: none; transition: all .3s; }
-.btn-ow:hover { border-color: var(–cream); background: rgba(255,255,255,.08); }
-
-footer {
-background: var(–ink); color: rgba(232,224,204,.22);
-padding: 2rem 3.5rem; display: flex; justify-content: space-between; align-items: center;
-font-size: .46rem; letter-spacing: .2em; text-transform: uppercase;
+@keyframes pp {
+0%{box-shadow:0 0 0 0 rgba(168,78,40,.5)}
+70%{box-shadow:0 0 0 22px rgba(168,78,40,0)}
+100%{box-shadow:0 0 0 0 rgba(168,78,40,0)}
 }
-footer a { color: rgba(192,57,43,.55); text-decoration: none; }
-footer a:hover { color: var(–red); }
+.loc-coord {
+position:absolute; bottom:2.5rem; left:50%; transform:translateX(-50%);
+font-size:.46rem; letter-spacing:.2em; color:rgba(24,19,14,.22); white-space:nowrap; z-index:3;
+}
 
-.r { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
-.r.on { opacity: 1; transform: none; }
-.d1{transition-delay:.08s} .d2{transition-delay:.18s} .d3{transition-delay:.3s} .d4{transition-delay:.44s}
+/* ── COLOPHON — catalogue end page ── */
+.colophon {
+background:var(–ink);
+padding:7rem 5rem;
+display:grid; grid-template-columns:1fr 1px 1fr 1px 1fr;
+gap:0; align-items:start;
+}
+.colophon-divider { background:rgba(245,241,232,.08); }
+.col-block { padding:0 4rem; }
+.col-block:first-child { padding-left:0; }
+.col-block:last-child { padding-right:0; }
+.col-label {
+font-size:.44rem; letter-spacing:.4em; text-transform:uppercase;
+color:rgba(245,241,232,.2); margin-bottom:1.5rem; display:block;
+}
+.col-name {
+font-family:‘IM Fell English’, serif;
+font-size:1.6rem; color:rgba(245,241,232,.75); line-height:1.1; margin-bottom:1rem;
+}
+.col-name em { font-style:italic; color:var(–terra); }
+.col-detail {
+font-size:.6rem; line-height:2.1; color:rgba(245,241,232,.3);
+}
+.col-detail a { color:rgba(168,78,40,.6); text-decoration:none; }
+.col-detail strong { color:rgba(245,241,232,.5); font-weight:400; }
 
-@media(max-width:860px){
-.hero{grid-template-columns:1fr}
-.hero-right{height:45vh}
-.stats-band{flex-wrap:wrap}
-.stat-col{flex:1 1 33%; border-bottom:1px solid rgba(232,224,204,.07)}
-.s-prop{grid-template-columns:1fr}
-.s-spy-inner{grid-template-columns:1fr; gap:3rem; padding:0 2rem}
-.features-list{grid-template-columns:1fr}
-.feat:nth-child(2n){border-right:1px solid rgba(26,23,20,.1); padding-left:0; padding-right:2.5rem}
-.contact-sheet{grid-template-columns:repeat(3,1fr)}
-.s-loc{grid-template-columns:1fr}
-.loc-right{height:40vh}
-nav{padding:.8rem 1.5rem}
-.nav-stamp{display:none}
-.features-inner, .s-spy-inner{padding:0 2rem}
-.features-hdr{grid-template-columns:1fr; gap:1rem}
-.features-big-num{font-size:4rem}
-.cta-acts{flex-direction:column; align-items:center}
-.loc-left{padding:4rem 2rem}
-.s-prop-text{padding:4rem 2rem}
-.s-gallery{padding:2.5rem 2rem}
+.colophon-foot {
+background:var(–ink);
+padding:2rem 5rem;
+border-top:1px solid rgba(245,241,232,.06);
+display:flex; justify-content:space-between; align-items:center;
+font-size:.44rem; letter-spacing:.2em; text-transform:uppercase;
+color:rgba(245,241,232,.15);
+}
+
+/* ── SCROLL REVEAL ── */
+.r {
+opacity:0; transform:translateY(24px);
+transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
+}
+.r.on { opacity:1; transform:none; }
+.d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.32s} .d4{transition-delay:.46s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+nav { padding:0 2rem; }
+.nav-center { display:none; }
+.hero-foot { grid-template-columns:1fr; gap:1rem; }
+.hero-ref, .hero-coords { display:none; }
+.s-desc { grid-template-columns:1fr; }
+.s-desc-right { min-height:60vw; }
+.s-stats { grid-template-columns:repeat(3,1fr); }
+.stat:nth-child(3) { border-right:none; }
+.s-arch { grid-template-columns:1fr; }
+.s-blue { grid-template-columns:1fr; }
+.blue-right { grid-template-columns:1fr 1fr; }
+.hist-inner { grid-template-columns:1fr; padding:0 2.5rem; gap:3rem; }
+.s-gallery { grid-template-columns:1fr 1fr; grid-template-rows:repeat(3,38vw); }
+.g-item:first-child { grid-row:auto; }
+.s-loc { grid-template-columns:1fr; }
+.loc-right { height:40vh; }
+.colophon { grid-template-columns:1fr; gap:3rem; }
+.colophon-divider { display:none; }
+.col-block { padding:0; }
+.colophon-foot { flex-direction:column; gap:1rem; text-align:center; }
+.s-desc-left, .loc-left { padding:5rem 2.5rem; }
+.hist-inner { gap:3rem; }
 }
 </style>
 
 </head>
 <body>
 
-<div class="grain"></div>
-<div class="tape-top"></div>
 <div id="cur"></div>
-<div id="cur-x"></div>
+<div id="cur-r"></div>
+
+<!-- Reusable arch clip-path -->
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <clipPath id="arch-clip" clipPathUnits="objectBoundingBox">
+      <path d="M0,1 L0,0.38 Q0,0 0.5,0 Q1,0 1,0.38 L1,1 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<!-- ── NAV ── -->
 
 <nav>
-  <div class="nav-file">File <span>W-047J8X</span> · Los Monteros · Marbella Este</div>
-  <div class="nav-stamp">Top Secret</div>
-  <a href="#enquire" class="nav-cta">Request Access</a>
+  <div class="nav-left">Villa <em>Annabel</em></div>
+  <div class="nav-center">Los Monteros · Marbella Este · W-047J8X</div>
+  <div class="nav-right">Engel & Völkers</div>
 </nav>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 
 <section class="hero">
-  <div class="hero-left">
-    <div>
-      <div class="hero-classified">Classified · Eyes Only</div>
-      <div class="hero-file-num">Subject File / Property Dossier / 1950–Present</div>
-      <h1 class="hero-title">VILLA<br>ANNABEL</h1>
-      <div class="hero-title-italic">Los Monteros, Marbella<br>Frontline Beach Estate</div>
-      <div class="hero-redacted">
-        <div class="redact-line">Subject acquired <span class="redact-bar rb-l"></span> 1950s</div>
-        <div class="redact-line">Original owner <span class="redact-bar rb-m"></span> Franco</div>
-        <div class="redact-line">Agent <span class="redact-bar rb-s"></span> Griffith · OSS</div>
-        <div class="redact-line">Guests incl. <span class="redact-bar rb-l"></span> Kennedy</div>
-      </div>
-    </div>
-    <div class="hero-bottom">
-      <div class="hero-coords">
-        <span>36°30′22.4″N</span>
-        <span>4°50′11.6″W</span>
-        <span style="margin-top:.3rem;opacity:.5">Mediterranean Sea · Spain</span>
-      </div>
-      <div class="hero-scroll-hint">Scroll to Declassify</div>
+  <div class="hero-media">
+    <div class="hero-media-inner">
+      <!-- <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><source src="villa.mp4"></video> -->
     </div>
   </div>
-  <div class="hero-right">
-    <div class="hero-img-ph">
-      <!-- <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"><source src="villa.mp4"></video> -->
-      <div class="hero-img-placeholder-text">Insert video or photo here<br>Recommended: drone footage<br>or exterior / aerial shot</div>
+
+  <div class="hero-arch" aria-hidden="true">
+    <svg viewBox="0 0 780 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+      <!-- Outer horseshoe arch — proportions based on Alhambra -->
+      <path d="M40 900 L40 520 Q40 60 390 60 Q740 60 740 520 L740 900"
+            stroke="rgba(122,94,50,0.2)" stroke-width="1.5" fill="none"/>
+      <!-- Inner intrados -->
+      <path d="M90 900 L90 530 Q90 120 390 120 Q690 120 690 530 L690 900"
+            stroke="rgba(122,94,50,0.1)" stroke-width="1" fill="none"/>
+      <!-- Horseshoe overhang lines -->
+      <path d="M40 515 Q40 440 68 418" stroke="rgba(122,94,50,0.12)" stroke-width="1" fill="none"/>
+      <path d="M740 515 Q740 440 712 418" stroke="rgba(122,94,50,0.12)" stroke-width="1" fill="none"/>
+      <!-- Keystone -->
+      <circle cx="390" cy="60" r="5" fill="rgba(168,78,40,0.35)"/>
+      <circle cx="390" cy="60" r="11" stroke="rgba(168,78,40,0.15)" fill="none"/>
+      <!-- Alfiz (rectangular frame) -->
+      <rect x="20" y="30" width="740" height="870" stroke="rgba(122,94,50,0.06)" fill="none" stroke-width="1"/>
+      <!-- Inner zellige panel suggestion -->
+      <path d="M160 900 L160 560 Q160 240 390 240 Q620 240 620 560 L620 900"
+            stroke="rgba(28,85,102,0.08)" stroke-width="0.8" stroke-dasharray="5 4" fill="none"/>
+      <!-- Column bases -->
+      <rect x="28" y="888" width="24" height="8" rx="1" fill="rgba(122,94,50,0.15)"/>
+      <rect x="728" y="888" width="24" height="8" rx="1" fill="rgba(122,94,50,0.15)"/>
+    </svg>
+  </div>
+
+  <div class="hero-foot">
+    <div class="hero-ref">
+      <span>Ref. W-047J8X</span>
+      <span>Frontline Beach</span>
+      <span>Est. 1950s</span>
     </div>
-    <div class="hero-stamp">VILLA<br>ANNABEL</div>
-    <div class="hero-caption">
-      Los Monteros — Marbella Este<br>
-      Frontline Beach · 4.280 m² Plot<br>
-      Ref. W-047J8X · E&amp;V El Rosario
+    <div class="hero-title-block">
+      <span class="hero-name">Villa Annabel</span>
+      <span class="hero-name-sub">Los Monteros, Marbella Este</span>
+    </div>
+    <div class="hero-coords">
+      <span>36°30′22.4″N</span>
+      <span>4°50′11.6″W</span>
+      <span>Mediterranean Sea</span>
     </div>
   </div>
 </section>
 
-<!-- STATS -->
+<!-- Zellige band -->
 
-<div class="stats-band">
-  <div class="stat-col"><div class="stat-label">Built Area</div><div class="stat-val">778<em>m²</em></div><div class="stat-note">Main residence</div></div>
-  <div class="stat-col"><div class="stat-label">Plot</div><div class="stat-val">4.280<em>m²</em></div><div class="stat-note">No adj. neighbours</div></div>
-  <div class="stat-col"><div class="stat-label">Suites</div><div class="stat-val">6</div><div class="stat-note">+ guest house</div></div>
-  <div class="stat-col"><div class="stat-label">Bathrooms</div><div class="stat-val">7</div><div class="stat-note">All en-suite</div></div>
-  <div class="stat-col"><div class="stat-label">Price</div><div class="stat-val" style="font-size:clamp(1.4rem,2.2vw,2rem)">P.O.A.</div><div class="stat-note">Price on application</div></div>
-</div>
+<div class="band"></div>
 
-<!-- THE PROPERTY -->
+<!-- ── DESCRIPTION ── -->
 
-<section class="s-prop">
-  <div class="s-prop-text">
-    <div class="section-label r">The Property</div>
-    <h2 class="prop-headline r d1">THE MOST<br>EXCEPTIONAL<br><em>beach estate</em><br>ON THE MED.</h2>
-    <p class="prop-body r d2">A frontline beach position on a <span class="hl">4.280 m² plot</span> within Los Monteros — Marbella's most exclusive coastal enclave, developed in the 1960s with no additional land available. What exists here cannot be replicated. Current coastal regulations make it impossible.</p>
-    <div class="prop-quote r d3">
-      <p>"The gardens flow naturally to the shore, creating an atmosphere of serenity and exclusivity that no planning regulation would permit today."</p>
+<section class="s-desc">
+  <div class="s-desc-left">
+    <div class="sec-label r">La Villa</div>
+    <h2 class="desc-h r d1">
+      One of the most exceptional<br>
+      beach estates on the<br>
+      <em>entire Mediterranean coast.</em>
+    </h2>
+    <p class="desc-body r d2">
+      An iconic Moorish-style villa, set on an expansive frontline plot within the most exclusive coastal community in Marbella. No adjacent neighbours on either side. The gardens flow naturally toward the shore.
+    </p>
+    <p class="desc-body r d3">
+      A spectacular floral courtyard with lámina de agua receives you. From the entrance hall the house opens to wide terraces, manicured gardens and uninterrupted views of the Mediterranean. The principal suite occupies the azotea, with panoramic views toward the Atlas Mountains of Morocco.
+    </p>
+    <div class="desc-pull r d4">
+      <p>"Its position — protected, irreplaceable, frontline — is one that current coastal regulations make impossible to recreate anywhere on this coast."</p>
       <cite>— Engel & Völkers El Rosario</cite>
     </div>
-    <p class="prop-body r d4">Moorish architecture with original Andalusian details. A spectacular floral patio with lámina de agua. Wide terraces. Uninterrupted Mediterranean views. A fully equipped beach chiringuito with sunsets over the Atlas Mountains of Morocco.</p>
   </div>
-  <div class="s-prop-img">
-    <div class="s-prop-img-ph">
-      <!-- <img src="prop.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"> -->
-      <div class="prop-img-cap">Insert property photograph<br>Exterior / garden / beach<br>Format: portrait preferred</div>
+  <div class="s-desc-right">
+    <div class="s-desc-img">
+      <!-- <img src="exterior.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"> -->
+      <div class="img-caption">Main facade · Los Monteros<br>Insert photograph</div>
     </div>
   </div>
 </section>
 
-<!-- THE SPY -->
+<!-- ── STATS ── -->
 
-<section class="s-spy">
-  <div class="s-spy-inner">
-    <div>
-      <div class="spy-section-label r">Subject History · Declassified</div>
-      <h2 class="spy-headline r d1">SHE WORE<br>BALENCIAGA.<br><em>And carried a pistol.</em></h2>
-      <p class="spy-body r d2">Built in the 1950s for <strong>Carmen Franco</strong>, daughter of the Spanish Generalísimo. Acquired a decade later by <strong>Aline Griffith</strong> — American OSS field agent, New York model, and Countess of Romanones — sent to Madrid under cover to infiltrate Nazi networks within Spain's neutral wartime élite.</p>
-      <p class="spy-body r d3">Griffith moved through the highest circles of European society. Dressed in Balenciaga. Rubies at her throat. A pistol in her bag. Villa Annabel became her stage — hosting the most glamorous gatherings Marbella has ever seen.</p>
-      <p class="spy-body r d4">In 1989, the U.S. Army inducted her into its <strong>Military Intelligence Hall of Fame</strong>. Her bestselling memoir: <em>The Spy Wore Red</em>, 1987.</p>
-    </div>
-    <div class="spy-dossier r d2">
-      <div class="dos-header">▸ Subject Dossier · Aline Griffith</div>
-      <div class="dos-field"><div class="dos-key">Born</div><div class="dos-val">22 May 1923 · New York, USA</div></div>
-      <div class="dos-field"><div class="dos-key">Died</div><div class="dos-val">11 Dec 2017 · Madrid, Spain</div></div>
-      <div class="dos-field"><div class="dos-key">Agency</div><div class="dos-val dos-val-red">OSS — Office of Strategic Services</div></div>
-      <div class="dos-field"><div class="dos-key">Cover</div><div class="dos-val">American socialité · Model</div></div>
-      <div class="dos-field"><div class="dos-key">Title</div><div class="dos-val">Countess of Romanones</div></div>
-      <div class="dos-field"><div class="dos-key">Decoration</div><div class="dos-val">Mil. Intelligence Hall of Fame, 1989</div></div>
-      <div class="dos-sep"></div>
-      <div class="dos-quote">"With rubies at her neck and a pistol in her bag, she quickly became a star of the international jet set."</div>
-      <div class="dos-guests-label">▸ Known guests · Villa Annabel</div>
-      <ul class="dos-guest-list">
-        <li>Jackie Kennedy</li>
-        <li>Audrey Hepburn</li>
-        <li>Wallis Simpson</li>
-        <li style="color:rgba(232,224,204,.18);font-family:'IBM Plex Mono';font-size:.45rem;letter-spacing:.1em;font-style:normal">+ European royalty · magnates · celebrities</li>
-      </ul>
-    </div>
+<div class="s-stats">
+  <div class="stat r">
+    <div class="stat-n">778<sub>m²</sub></div>
+    <div class="stat-l">Built Area</div>
+    <div class="stat-note">Main residence</div>
   </div>
-</section>
-
-<!-- FEATURES -->
-
-<section class="s-features">
-  <div class="features-inner">
-    <div class="features-hdr">
-      <div class="features-big-num r">09</div>
-      <div class="r d1">
-        <div class="section-label">The Residence</div>
-        <h2 class="features-title">EVERY DETAIL<br><em>considered.</em></h2>
-      </div>
-    </div>
-    <div class="features-list">
-      <div class="feat r"><div class="feat-num">01</div><div><div class="feat-name">Moorish Architecture</div><p class="feat-desc">Original Andalusian-Arab design with innumerable authentic details, carefully updated with contemporary finishes and refined interior decoration.</p></div></div>
-      <div class="feat r d1"><div class="feat-num">02</div><div><div class="feat-name">Floral Patio & Lámina de Agua</div><p class="feat-desc">A spectacular entrance courtyard with reflecting water sheet announces the ceremonial sequence of the main residence — classical Moorish tradition at its finest.</p></div></div>
-      <div class="feat r d1"><div class="feat-num">03</div><div><div class="feat-name">Private Beach Access</div><p class="feat-desc">Unobstructed frontline beach position with direct private access. Los Monteros beach is among the finest natural beaches on the Costa del Sol, south-east facing.</p></div></div>
-      <div class="feat r d2"><div class="feat-num">04</div><div><div class="feat-name">Rooftop Azotea Suite</div><p class="feat-desc">The principal suite opens onto a rooftop terrace with panoramic views toward the Atlas Mountains of Morocco and the full arc of the Marbella coastline.</p></div></div>
-      <div class="feat r d2"><div class="feat-num">05</div><div><div class="feat-name">Beachfront Chiringuito</div><p class="feat-desc">A fully equipped beach bar in first line — a unique entertainment space commanding sunset views over the Mediterranean and the Moroccan mountains beyond.</p></div></div>
-      <div class="feat r d3"><div class="feat-num">06</div><div><div class="feat-name">Independent Guest House</div><p class="feat-desc">A separate cottage within the gardens ensures complete guest privacy. Four additional suites in the main house provide comprehensive accommodation capacity.</p></div></div>
-    </div>
+  <div class="stat r d1">
+    <div class="stat-n">4.280<sub>m²</sub></div>
+    <div class="stat-l">Plot</div>
+    <div class="stat-note">No adjacent neighbours</div>
   </div>
-</section>
-
-<!-- GALLERY: CONTACT SHEET -->
-
-<div class="s-gallery">
-  <div class="gallery-hdr">
-    <div class="gallery-title">Photo Archive · Villa Annabel</div>
-    <div class="gallery-roll">Roll 01 — Los Monteros — Marbella Este</div>
+  <div class="stat r d2">
+    <div class="stat-n">6</div>
+    <div class="stat-l">Suites</div>
+    <div class="stat-note">+ independent guest house</div>
   </div>
-  <div class="contact-sheet">
-    <div class="cf"><div class="cf-inner"><div class="cf-ph cp1"><!-- img --><span class="cf-lbl">Patio<br>Central</span></div></div><div class="cf-n">01</div></div>
-    <div class="cf"><div class="cf-inner"><div class="cf-ph cp2"><!-- img --><span class="cf-lbl">La<br>Playa</span></div></div><div class="cf-n">02</div></div>
-    <div class="cf"><div class="cf-inner"><div class="cf-ph cp3"><!-- img --><span class="cf-lbl">Salón<br>Principal</span></div></div><div class="cf-n">03</div></div>
-    <div class="cf"><div class="cf-inner"><div class="cf-ph cp4"><!-- img --><span class="cf-lbl">Azotea<br>Suite</span></div></div><div class="cf-n">04</div></div>
-    <div class="cf"><div class="cf-inner"><div class="cf-ph cp5"><!-- img --><span class="cf-lbl">Chiringuito<br>Beach</span></div></div><div class="cf-n">05</div></div>
-    <div class="cf"><div class="cf-inner"><div class="cf-ph cp6"><!-- img --><span class="cf-lbl">Guest<br>House</span></div></div><div class="cf-n">06</div></div>
+  <div class="stat r d3">
+    <div class="stat-n">7</div>
+    <div class="stat-l">Bathrooms</div>
+    <div class="stat-note">All en-suite</div>
+  </div>
+  <div class="stat r d4">
+    <div class="stat-n" style="font-size:clamp(1.3rem,2vw,1.9rem);color:var(--terra)">1950<sub style="font-size:.55em;color:var(--arch)">s</sub></div>
+    <div class="stat-l">Established</div>
+    <div class="stat-note">Built for Carmen Franco</div>
   </div>
 </div>
 
-<!-- LOCATION -->
+<!-- ── ARCHITECTURE: THREE ARCOS ── -->
+
+<section class="s-arch">
+  <div class="arch-panel r">
+    <div class="arch-media">
+      <div class="arch-ph ap-1">
+        <!-- <img src="garden.jpg" ...> -->
+        <span class="arch-ph-hint">The Garden<br>& Patio</span>
+      </div>
+    </div>
+    <div class="arch-body">
+      <div class="arch-idx">01</div>
+      <div class="arch-name">The Gardens</div>
+      <p class="arch-desc">Manicured grounds flowing naturally to the shore. A floral entrance courtyard with classical lámina de agua — the heart of the Moorish domestic tradition, translated here to the Mediterranean waterfront.</p>
+    </div>
+  </div>
+  <div class="arch-panel r d2">
+    <div class="arch-media">
+      <div class="arch-ph ap-2">
+        <!-- <img src="beach.jpg" ...> -->
+        <span class="arch-ph-hint">The Beach<br>& Chiringuito</span>
+      </div>
+    </div>
+    <div class="arch-body">
+      <div class="arch-idx">02</div>
+      <div class="arch-name">The Shore</div>
+      <p class="arch-desc">Direct private access to the beach of Los Monteros — one of the finest natural beaches on the Costa del Sol. A fully equipped chiringuito in absolute first line completes the estate's relationship with the sea.</p>
+    </div>
+  </div>
+  <div class="arch-panel r d3">
+    <div class="arch-media">
+      <div class="arch-ph ap-3">
+        <!-- <img src="azotea.jpg" ...> -->
+        <span class="arch-ph-hint">Azotea<br>Suite</span>
+      </div>
+    </div>
+    <div class="arch-body">
+      <div class="arch-idx">03</div>
+      <div class="arch-name">The Azotea</div>
+      <p class="arch-desc">The principal suite opens onto a rooftop terrace from which the full arc of the Marbella coastline, and on clear days the mountains of Morocco beyond, is laid before you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── ZELLIGE / ARCHITECTURE STATEMENT ── -->
+
+<div class="s-blue">
+  <div class="blue-left">
+    <div class="blue-h r">
+      Moorish architecture<br><em>at the water's edge.</em>
+    </div>
+    <p class="blue-body r d2">
+      Original Andalusian-Arab design enriched with innumerable authentic details — stucco yesería, tiled zócalos, arcos de herradura. Carefully updated with contemporary finishes while preserving the spiritual geometry that defines this place. Air conditioning, underfloor heating, heated pool, 24h security, automated irrigation. The ancient and the precise, side by side.
+    </p>
+  </div>
+  <div class="blue-right">
+    <div class="blue-stat r">
+      <div class="blue-stat-n">6<sub>suites</sub></div>
+      <div class="blue-stat-l">Bedrooms</div>
+      <div class="blue-stat-note">Including independent guest cottage with private access</div>
+    </div>
+    <div class="blue-stat r d1">
+      <div class="blue-stat-n">7<sub>baths</sub></div>
+      <div class="blue-stat-l">Bathrooms</div>
+      <div class="blue-stat-note">All en-suite, marble finishing throughout</div>
+    </div>
+    <div class="blue-stat r d2">
+      <div class="blue-stat-n" style="font-size:clamp(1.4rem,2.2vw,2.2rem)">Gated<sub style="font-size:.5em;color:rgba(245,241,232,.25)">24h</sub></div>
+      <div class="blue-stat-l">Security</div>
+      <div class="blue-stat-note">Closed community with surveillance cameras</div>
+    </div>
+    <div class="blue-stat r d3">
+      <div class="blue-stat-n" style="font-size:clamp(1.4rem,2.2vw,2.2rem)">P.O.A.</div>
+      <div class="blue-stat-l">Price</div>
+      <div class="blue-stat-note">Available on application through Engel & Völkers El Rosario</div>
+    </div>
+  </div>
+</div>
+
+<!-- Band -->
+
+<div class="band"></div>
+
+<!-- ── HISTORY ── -->
+
+<section class="s-hist">
+  <div class="hist-inner">
+    <div class="hist-img r">
+      <div class="hist-img-ph">
+        <!-- Portrait of Aline Griffith or archival photograph -->
+        <div class="hist-ph-hint">Insert archival<br>photograph</div>
+      </div>
+    </div>
+    <div class="hist-text">
+      <div class="sec-label r" style="color:var(--terra)">History</div>
+      <h2 class="hist-h r d1">
+        Built for a General's<br>daughter. Owned by<br><em>a spy.</em>
+      </h2>
+      <p class="hist-body r d2">
+        Constructed in the 1950s for <strong>Carmen Franco</strong>, daughter of the Spanish Generalísimo Francisco Franco. Acquired a decade later by <strong>Aline Griffith</strong> — American OSS field operative, New York model, Countess of Romanones — who had been dispatched to wartime Madrid under cover to counter Nazi influence within Spain's neutral ruling élite.
+      </p>
+      <p class="hist-body r d3">
+        Dressed in Balenciaga with rubies at her neck and a pistol in her bag, she became a fixture of the international jet set. Villa Annabel became the setting for some of the most glamorous gatherings Marbella has ever known. In 1989 she was inducted into the U.S. Army Military Intelligence Hall of Fame. Her memoir, <em>The Spy Wore Red</em>, was published in 1987.
+      </p>
+      <div class="hist-dossier r d3">
+        <div class="hist-dossier-row">
+          <span class="hist-dossier-key">Subject</span>
+          <span class="hist-dossier-val">Aline Griffith, Countess of Romanones</span>
+        </div>
+        <div class="hist-dossier-row">
+          <span class="hist-dossier-key">Dates</span>
+          <span class="hist-dossier-val">1923 – 2017</span>
+        </div>
+        <div class="hist-dossier-row">
+          <span class="hist-dossier-key">Agency</span>
+          <span class="hist-dossier-val">OSS — Office of Strategic Services, WWII</span>
+        </div>
+        <div class="hist-dossier-row">
+          <span class="hist-dossier-key">Decoration</span>
+          <span class="hist-dossier-val">Military Intelligence Hall of Fame, 1989</span>
+        </div>
+      </div>
+      <div class="hist-guests r d4">
+        <div class="hist-guests-label">Among those who stayed</div>
+        <ul class="hist-guest-list">
+          <li>Jackie Kennedy</li>
+          <li>Audrey Hepburn</li>
+          <li>Wallis Simpson</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+
+<section class="s-gallery">
+  <div class="g-item">
+    <div class="g-ph g1">
+      <!-- <img src="g1.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"> -->
+      <div class="g-ph-hint">Garden &amp; Patio</div>
+    </div>
+    <div class="g-label">The Garden</div>
+  </div>
+  <div class="g-item">
+    <div class="g-ph g2">
+      <div class="g-ph-hint">Interior</div>
+    </div>
+    <div class="g-label">Salón Principal</div>
+  </div>
+  <div class="g-item">
+    <div class="g-ph g3">
+      <div class="g-ph-hint">Beach access</div>
+    </div>
+    <div class="g-label">La Playa</div>
+  </div>
+  <div class="g-item">
+    <div class="g-ph g4">
+      <div class="g-ph-hint">Rooftop</div>
+    </div>
+    <div class="g-label">Azotea Suite</div>
+  </div>
+  <div class="g-item">
+    <div class="g-ph g5">
+      <div class="g-ph-hint">Chiringuito</div>
+    </div>
+    <div class="g-label">Beachfront Chiringuito</div>
+  </div>
+</section>
+
+<!-- ── LOCATION ── -->
 
 <section class="s-loc">
   <div class="loc-left">
-    <div class="section-label r">The Location</div>
-    <h2 class="loc-title r d1">AN ADDRESS<br>THAT CANNOT<br><em>be repeated.</em></h2>
-    <p class="loc-body r d2">Los Monteros is a fully consolidated urbanisation — no additional plots remain for development. The position of Villa Annabel is, by the definition of current coastal regulations, irreplaceable.</p>
+    <div class="sec-label r">Location</div>
+    <h2 class="loc-h r d1">
+      An address that<br>cannot<br><em>be repeated.</em>
+    </h2>
+    <p class="loc-body r d2">
+      Los Monteros is a fully consolidated urbanisation developed in the 1960s. No additional plots remain for development. The position Villa Annabel occupies — frontline, unobstructed, private — is, by definition of current coastal regulation, irreplaceable on this coast.
+    </p>
     <table class="loc-table r d3">
       <tr><td>Beach</td><td>Direct private access · First line</td></tr>
-      <tr><td>Hotel Los Monteros</td><td>Adjacent · 5-star spa &amp; golf</td></tr>
-      <tr><td>Marbella Centro</td><td>15 min east by car</td></tr>
+      <tr><td>Hotel Los Monteros & Spa</td><td>Adjacent</td></tr>
+      <tr><td>Golf</td><td>Championship course · minutes away</td></tr>
+      <tr><td>Marbella Centro</td><td>15 minutes east</td></tr>
       <tr><td>Málaga Airport</td><td>±45 minutes</td></tr>
-      <tr><td>Orientation</td><td>South-east · Atlas Mountains view</td></tr>
-      <tr><td>Security</td><td>Gated community · 24h surveillance</td></tr>
+      <tr><td>Orientation</td><td>South-east · Atlas Mountains views</td></tr>
     </table>
   </div>
   <div class="loc-right">
-    <div class="loc-dot"></div>
+    <div class="loc-pin"></div>
     <div class="loc-coord">36°30′N · 4°50′W · Los Monteros · Marbella Este</div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ── COLOPHON ── end page, like a book -->
 
-<section class="s-cta" id="enquire">
-  <div class="cta-label">Engel &amp; Völkers El Rosario · Ref. W-047J8X</div>
-  <h2 class="cta-title">REQUEST YOUR<br>PRIVATE<br><em>viewing.</em></h2>
-  <div class="cta-acts">
-    <a href="tel:+34952832040" class="btn-w">+34 952 83 20 40</a>
-    <a href="mailto:elrosario@engelvoelkers.com" class="btn-ow">Send Enquiry</a>
+<div class="colophon">
+  <div class="col-block">
+    <span class="col-label">The Property</span>
+    <div class="col-name">Villa <em>Annabel</em></div>
+    <div class="col-detail">
+      Los Monteros, Marbella Este<br>
+      Frontline Beach Estate<br>
+      Ref. W-047J8X<br><br>
+      778 m² built · 4.280 m² plot<br>
+      6 suites · 7 bathrooms<br>
+      Independent guest house<br>
+      Heated pool · Chiringuito
+    </div>
   </div>
-</section>
-
-<footer>
-  <div>Villa Annabel · Los Monteros · Marbella Este</div>
-  <div>Ref. <a href="#">W-047J8X</a> · Engel &amp; Völkers El Rosario</div>
-  <div>+34 952 83 20 40</div>
-</footer>
+  <div class="colophon-divider"></div>
+  <div class="col-block">
+    <span class="col-label">The Agent</span>
+    <div class="col-name">Engel <em>& Völkers</em></div>
+    <div class="col-detail">
+      El Rosario · Marbella<br><br>
+      <strong>+34 952 83 20 40</strong><br>
+      elrosario@engelvoelkers.com<br><br>
+      All enquiries handled<br>with complete discretion.
+    </div>
+  </div>
+  <div class="colophon-divider"></div>
+  <div class="col-block">
+    <span class="col-label">The Location</span>
+    <div class="col-name">Los <em>Monteros</em></div>
+    <div class="col-detail">
+      36°30′22.4″N · 4°50′11.6″W<br><br>
+      Developed 1960s.<br>
+      No additional plots available.<br>
+      South-east orientation.<br>
+      Views to Atlas Mountains, Morocco.<br><br>
+      15 min · Marbella Centro<br>
+      45 min · Málaga Airport
+    </div>
+  </div>
+</div>
+<div class="colophon-foot">
+  <span>Villa Annabel · Los Monteros · Marbella Este</span>
+  <span>Ref. W-047J8X</span>
+  <span>Engel & Völkers El Rosario</span>
+</div>
 
 <script>
-// CURSOR
-const cur=document.getElementById('cur'),curX=document.getElementById('cur-x');
-let mx=0,my=0,cx=0,cy=0;
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
-(function tick(){
+(function t(){
   cur.style.left=mx+'px';cur.style.top=my+'px';
-  cx+=(mx-cx)*.14;cy+=(my-cy)*.14;
-  curX.style.left=cx+'px';curX.style.top=cy+'px';
-  requestAnimationFrame(tick);
+  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+  curR.style.left=rx+'px';curR.style.top=ry+'px';
+  requestAnimationFrame(t);
 })();
 
-// REDACTED bars — staged reveal
-document.querySelectorAll('.redact-bar').forEach((b,i)=>{
-  b.style.opacity='0';
-  setTimeout(()=>{b.style.transition='opacity .5s';b.style.opacity='1';},1100+i*250);
-});
-
-// SCROLL REVEAL
-const io=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on');});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.1,rootMargin:'0 0 -40px 0'});
 document.querySelectorAll('.r').forEach(el=>io.observe(el));
 
-// PARALLAX HERO
 window.addEventListener('scroll',()=>{
   const y=window.scrollY;
-  const p=document.querySelector('.hero-img-ph');
-  if(p)p.style.transform=`translateY(${y*.22}px) scale(1.04)`;
-  const l=document.querySelector('.hero-left');
-  if(l)l.style.transform=`translateY(${y*.1}px)`;
+  const m=document.querySelector('.hero-media');
+  if(m)m.style.transform=`translateY(${y*.25}px)`;
+  const a=document.querySelector('.hero-arch');
+  if(a)a.style.transform=`translateY(${y*.08}px)`;
 },{passive:true});
 </script>
 
