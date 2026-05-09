@@ -1059,56 +1059,14 @@ nav { padding:0 2rem; }
     </table>
   </div>
   <div class="loc-right">
-    <svg class="loc-svg" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <pattern id="dots" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="0.6" fill="rgba(168,78,40,0.25)"/>
-        </pattern>
-      </defs>
-      <rect width="600" height="500" fill="url(#dots)"/>
-      <!-- Sea -->
-      <path d="M0,310 Q100,300 180,315 Q280,330 380,320 Q480,308 600,318 L600,500 L0,500 Z" fill="rgba(28,85,102,0.18)"/>
-      <path d="M0,310 Q100,300 180,315 Q280,330 380,320 Q480,308 600,318" stroke="rgba(28,85,102,0.55)" stroke-width="1.5" fill="none"/>
-      <!-- Sea waves -->
-      <path d="M40,360 Q70,355 100,360 Q130,365 160,360" stroke="rgba(28,85,102,0.3)" stroke-width="0.8" fill="none"/>
-      <path d="M220,400 Q260,395 300,400 Q340,405 380,400" stroke="rgba(28,85,102,0.3)" stroke-width="0.8" fill="none"/>
-      <path d="M420,440 Q450,435 480,440 Q510,445 540,440" stroke="rgba(28,85,102,0.3)" stroke-width="0.8" fill="none"/>
-      <!-- Mountains north (atlas hint) -->
-      <path d="M0,90 L60,60 L110,80 L170,50 L240,75 L320,55 L400,80 L480,60 L560,85 L600,70 L600,140 L0,140 Z" fill="rgba(45,74,42,0.12)"/>
-      <path d="M0,110 L80,85 L140,100 L210,75 L290,95 L370,80 L450,100 L530,85 L600,100 L600,140 L0,140 Z" fill="rgba(45,74,42,0.18)"/>
-      <!-- Roads -->
-      <path d="M0,250 Q150,245 300,255 Q450,265 600,255" stroke="rgba(168,78,40,0.4)" stroke-width="1" stroke-dasharray="4 3" fill="none"/>
-      <path d="M0,200 Q200,210 600,200" stroke="rgba(168,78,40,0.25)" stroke-width="0.8" stroke-dasharray="3 4" fill="none"/>
-      <!-- Marbella label -->
-      <text x="80" y="225" font-family="serif" font-size="9" fill="rgba(24,19,14,0.4)" letter-spacing="3">MARBELLA</text>
-      <text x="450" y="225" font-family="serif" font-size="7" fill="rgba(24,19,14,0.3)" letter-spacing="2">ESTEPONA</text>
-      <text x="280" y="475" font-family="serif" font-size="9" fill="rgba(28,85,102,0.5)" letter-spacing="4" font-style="italic">MAR MEDITERRÁNEO</text>
-      <!-- Hotel Los Monteros marker -->
-      <circle cx="305" cy="280" r="2" fill="rgba(24,19,14,0.5)"/>
-      <text x="312" y="284" font-family="serif" font-size="6" fill="rgba(24,19,14,0.45)">Hotel Los Monteros</text>
-      <!-- Villa Annabel — frontline beach -->
-      <g class="loc-marker-g">
-        <circle cx="320" cy="305" r="20" fill="rgba(168,78,40,0.08)"/>
-        <circle cx="320" cy="305" r="12" fill="rgba(168,78,40,0.18)"/>
-        <circle cx="320" cy="305" r="6" fill="#a84e28"/>
-        <line x1="320" y1="305" x2="320" y2="265" stroke="#a84e28" stroke-width="0.8"/>
-        <text x="324" y="262" font-family="serif" font-size="9" fill="#a84e28" letter-spacing="1.5" font-style="italic">Villa Annabel</text>
-      </g>
-      <!-- Compass rose -->
-      <g transform="translate(540,55)">
-        <circle r="20" fill="none" stroke="rgba(24,19,14,0.2)" stroke-width="0.5"/>
-        <path d="M0,-18 L4,0 L0,18 L-4,0 Z" fill="rgba(168,78,40,0.6)"/>
-        <text y="-24" text-anchor="middle" font-family="serif" font-size="7" fill="rgba(24,19,14,0.5)">N</text>
-      </g>
-      <!-- Scale bar -->
-      <g transform="translate(40,460)">
-        <line x1="0" y1="0" x2="60" y2="0" stroke="rgba(24,19,14,0.3)" stroke-width="1"/>
-        <line x1="0" y1="-3" x2="0" y2="3" stroke="rgba(24,19,14,0.3)"/>
-        <line x1="60" y1="-3" x2="60" y2="3" stroke="rgba(24,19,14,0.3)"/>
-        <text x="0" y="-6" font-family="serif" font-size="6" fill="rgba(24,19,14,0.4)">1 km</text>
-      </g>
-    </svg>
-    <div class="loc-coord">36°30′N · 4°50′W · Los Monteros · Marbella Este</div>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.5!2d-4.836!3d36.506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDMwJzIyLjQiTiA0wrA1MCcxMS42Ilc!5e0!3m2!1sen!2ses!4v1700000000000"
+      style="position:absolute;inset:0;width:100%;height:100%;border:0;filter:sepia(35%) saturate(85%) hue-rotate(-12deg) brightness(0.94) contrast(1.05);"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <div class="loc-coord" style="z-index:3;background:rgba(245,241,232,0.9);padding:.5em 1em;backdrop-filter:blur(8px);">36°30′N · 4°50′W · Los Monteros · Marbella Este</div>
   </div>
 </section>
 
