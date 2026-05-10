@@ -151,7 +151,7 @@ font-size:clamp(3rem,7vw,7rem);
 line-height:1;
 color:var(--ink);
 display:block;
-opacity:0; animation:fadeUp 1.1s .5s forwards;
+opacity:1;
 }
 .hero-name-sub { color:#ffffff; text-shadow: 0 2px 12px rgba(0,0,0,0.6);
 font-family:‘IM Fell English’, serif;
@@ -161,7 +161,7 @@ color:#ffffff;
 letter-spacing:.04em;
 display:block;
 margin-top:.5rem;
-opacity:0; animation:fadeUp .8s .9s forwards;
+opacity:1;
 }
 .hero-coords {
 text-align:right;
@@ -595,7 +595,7 @@ color:rgba(245,241,232,.15);
 
 /* ── SCROLL REVEAL ── */
 .r {
-opacity:0; transform:translateY(24px);
+opacity:1; transform:translateY(0);
 transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1);
 }
 .r.on { opacity:1; transform:none; }
