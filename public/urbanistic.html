@@ -11,7 +11,7 @@
   --faded:rgba(24,19,14,.4); --soft:rgba(24,19,14,.08);
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--white); color:var(--ink); font-family:'Josefin Sans',sans-serif; font-weight:300; }
+body { background:#f5f1e8; color:#18130e; font-family:'Josefin Sans',Georgia,serif; font-weight:300; font-size:16px; }
 header {
   padding:3rem 5rem 2rem;
   border-bottom:1px solid var(--soft);
@@ -19,22 +19,22 @@ header {
 }
 .back {
   font-size:.95rem; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--terra); text-decoration:none;
+  color:#a84e28; text-decoration:none;
   display:flex; align-items:center; gap:.5rem;
 }
 .back::before { content:'←'; }
-.header-title { font-family:'IM Fell English',serif; font-size:1rem; color:var(--ink); }
-.header-title em { font-style:italic; color:var(--terra); }
+.header-title { font-family:'IM Fell English',serif; font-size:1rem; color:#18130e; }
+.header-title em { font-style:italic; color:#a84e28; }
 main { max-width:900px; margin:0 auto; padding:5rem; }
 h1 {
   font-family:'IM Fell English',serif;
   font-size:clamp(2rem,4vw,3.5rem); font-weight:400; line-height:1.1;
   margin-bottom:.5rem;
 }
-h1 em { font-style:italic; color:var(--terra); }
+h1 em { font-style:italic; color:#a84e28; }
 .subtitle {
   font-size:.95rem; letter-spacing:.25em; text-transform:uppercase;
-  color:var(--faded); margin-bottom:4rem;
+  color:rgba(24,19,14,.4); margin-bottom:4rem;
 }
 .pdf-list { display:flex; flex-direction:column; gap:0; }
 .pdf-item {
@@ -45,16 +45,16 @@ h1 em { font-style:italic; color:var(--terra); }
 .pdf-item:first-child { border-top:1px solid var(--soft); }
 .pdf-info { display:flex; flex-direction:column; gap:.4rem; }
 .pdf-name {
-  font-family:'IM Fell English',serif; font-size:1.3rem; color:var(--ink);
+  font-family:'IM Fell English',serif; font-size:1.3rem; color:#18130e;
 }
-.pdf-meta { font-size:.85rem; letter-spacing:.2em; text-transform:uppercase; color:var(--faded); }
+.pdf-meta { font-size:.85rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(24,19,14,.4); }
 .pdf-link {
   font-size:.85rem; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--terra); text-decoration:none;
+  color:#a84e28; text-decoration:none;
   border:1px solid rgba(168,78,40,.3); padding:.6em 1.4em;
   white-space:nowrap; transition:all .3s; flex-shrink:0;
 }
-.pdf-link:hover { background:var(--terra); color:var(--white); }
+.pdf-link:hover { background:#a84e28; color:#f5f1e8; }
 .pdf-placeholder {
   font-size:.85rem; letter-spacing:.2em; text-transform:uppercase;
   color:rgba(24,19,14,.2); padding:.6em 1.4em;
@@ -66,7 +66,7 @@ h1 em { font-style:italic; color:var(--terra); }
   width:100%; text-align:left; background:none; border:none;
   padding:1.2rem 0; cursor:pointer;
   font-family:'Josefin Sans',sans-serif; font-size:.95rem;
-  letter-spacing:.2em; text-transform:uppercase; color:var(--zellige);
+  letter-spacing:.2em; text-transform:uppercase; color:#1c5566;
   display:flex; justify-content:space-between; align-items:center;
 }
 .note-toggle span { font-size:1.2rem; transition:transform .3s; }
