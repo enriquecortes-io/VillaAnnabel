@@ -60,6 +60,26 @@ h1 em { font-style:italic; color:var(--terra); }
   color:rgba(24,19,14,.2); padding:.6em 1.4em;
   border:1px solid rgba(24,19,14,.1); flex-shrink:0;
 }
+
+.pdf-note { border-bottom:1px solid var(--soft); }
+.note-toggle {
+  width:100%; text-align:left; background:none; border:none;
+  padding:1.2rem 0; cursor:pointer;
+  font-family:'Josefin Sans',sans-serif; font-size:.7rem;
+  letter-spacing:.2em; text-transform:uppercase; color:var(--zellige);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.note-toggle span { font-size:1.2rem; transition:transform .3s; }
+.note-toggle.open span { transform:rotate(45deg); }
+.note-body {
+  max-height:0; overflow:hidden;
+  transition:max-height .4s cubic-bezier(.16,1,.3,1);
+}
+.note-body.open { max-height:400px; }
+.note-body p {
+  font-size:.78rem; line-height:2; color:rgba(24,19,14,.55);
+  padding-bottom:1rem;
+}
 </style>
 </head>
 <body>
@@ -91,6 +111,17 @@ h1 em { font-style:italic; color:var(--terra); }
         <div class="pdf-meta">Catastro</div>
       </div>
       <a href="/catastro.pdf" target="_blank" class="pdf-link">Ver documento</a>
+    </div>
+    <div class="pdf-note">
+      <button class="note-toggle" onclick="this.nextElementSibling.classList.toggle('open');this.classList.toggle('open')">
+        ⚠ Note on dates <span>+</span>
+      </button>
+      <div class="note-body">
+        <p>The difference in dates between the historical record and the cadastral one is quite common and can be due to several reasons.</p>
+        <p>Sometimes, the Cadastre records the year a major renovation or an extension was completed, rather than the original construction date.</p>
+        <p>It could also be that the year in the registry corresponds to the date the building was legalized or when a cadastral update was formalized.</p>
+        <p>Sometimes, they simply assigned an approximate year due to a lack of exact data during the formation of the Cadastre.</p>
+      </div>
     </div>
     <div class="pdf-item">
       <div class="pdf-info">
