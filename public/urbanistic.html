@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urbanistic Information — Villa Annabel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Josefin+Sans:wght@200;300;400&display=swap');
+:root {
+  --white:#f5f1e8; --terra:#a84e28; --zellige:#1c5566; --ink:#18130e;
+  --faded:rgba(24,19,14,.4); --soft:rgba(24,19,14,.08);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--white); color:var(--ink); font-family:'Josefin Sans',sans-serif; font-weight:300; }
+header {
+  padding:3rem 5rem 2rem;
+  border-bottom:1px solid var(--soft);
+  display:flex; align-items:baseline; justify-content:space-between;
+}
+.back {
+  font-size:.75rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--terra); text-decoration:none;
+  display:flex; align-items:center; gap:.5rem;
+}
+.back::before { content:'←'; }
+.header-title { font-family:'IM Fell English',serif; font-size:1rem; color:var(--ink); }
+.header-title em { font-style:italic; color:var(--terra); }
+main { max-width:900px; margin:0 auto; padding:5rem; }
+h1 {
+  font-family:'IM Fell English',serif;
+  font-size:clamp(2rem,4vw,3.5rem); font-weight:400; line-height:1.1;
+  margin-bottom:.5rem;
+}
+h1 em { font-style:italic; color:var(--terra); }
+.subtitle {
+  font-size:.75rem; letter-spacing:.25em; text-transform:uppercase;
+  color:var(--faded); margin-bottom:4rem;
+}
+.pdf-list { display:flex; flex-direction:column; gap:0; }
+.pdf-item {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.8rem 0; border-bottom:1px solid var(--soft);
+  gap:2rem;
+}
+.pdf-item:first-child { border-top:1px solid var(--soft); }
+.pdf-info { display:flex; flex-direction:column; gap:.4rem; }
+.pdf-name {
+  font-family:'IM Fell English',serif; font-size:1.1rem; color:var(--ink);
+}
+.pdf-meta { font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; color:var(--faded); }
+.pdf-link {
+  font-size:.65rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--terra); text-decoration:none;
+  border:1px solid rgba(168,78,40,.3); padding:.6em 1.4em;
+  white-space:nowrap; transition:all .3s; flex-shrink:0;
+}
+.pdf-link:hover { background:var(--terra); color:var(--white); }
+.pdf-placeholder {
+  font-size:.65rem; letter-spacing:.2em; text-transform:uppercase;
+  color:rgba(24,19,14,.2); padding:.6em 1.4em;
+  border:1px solid rgba(24,19,14,.1); flex-shrink:0;
+}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" class="back">Villa Annabel</a>
+  <div class="header-title">Villa <em>Annabel</em> · W-047J8X</div>
+</header>
+<main>
+  <h1>Urbanistic<br><em>Information</em></h1>
+  <div class="subtitle">Los Monteros · Marbella Este · Ref. W-047J8X</div>
+  <div class="pdf-list">
+    <div class="pdf-item">
+      <div class="pdf-info">
+        <div class="pdf-name">Nota Simple</div>
+        <div class="pdf-meta">Registro de la Propiedad</div>
+      </div>
+      <span class="pdf-placeholder">Próximamente</span>
+    </div>
+    <div class="pdf-item">
+      <div class="pdf-info">
+        <div class="pdf-name">Certificado Urbanístico</div>
+        <div class="pdf-meta">Ayuntamiento de Marbella</div>
+      </div>
+      <span class="pdf-placeholder">Próximamente</span>
+    </div>
+    <div class="pdf-item">
+      <div class="pdf-info">
+        <div class="pdf-name">Plano de Situación</div>
+        <div class="pdf-meta">Catastro</div>
+      </div>
+      <span class="pdf-placeholder">Próximamente</span>
+    </div>
+    <div class="pdf-item">
+      <div class="pdf-info">
+        <div class="pdf-name">Licencia de Primera Ocupación</div>
+        <div class="pdf-meta">Documentación legal</div>
+      </div>
+      <span class="pdf-placeholder">Próximamente</span>
+    </div>
+  </div>
+</main>
+</body>
+</html>
